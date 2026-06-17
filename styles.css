@@ -188,25 +188,34 @@ small { font-size: 0.8rem; color: var(--text-muted); }
   flex: 1; display: flex; flex-direction: column;
   min-height: calc(100vh - 56px);
   min-width: 0;
-  overflow-x: hidden;
   background: var(--bg-body);
   width: 100%;
+  position: relative;
 }
 .topbar {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  display: flex;
   align-items: center;
-  padding: 16px 28px;
+  gap: 12px;
+  padding: 14px 28px;
   background: var(--bg-card);
   border-bottom: 1px solid var(--border-color);
   min-height: 64px;
-  position: sticky; top: 56px; z-index: 50;
-  overflow: hidden;
+  position: sticky; top: 0; z-index: 40;
+  box-sizing: border-box;
+  width: 100%;
+}
+#menu-toggle, #fam-menu-btn { display: none; flex-shrink: 0; width: 36px; height: 36px; justify-content: center; align-items: center; border-radius: 8px; }
+.page-title {
+  font-size: 1.35rem; margin: 0; min-width: 0;
+  flex: 1 1 0%;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   box-sizing: border-box;
 }
-#menu-toggle, #fam-menu-btn { grid-column: 1; display: none; margin-right: 16px; }
-.page-title { grid-column: 2; font-size: 1.35rem; margin: 0; min-width: 0; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-sizing: border-box; }
-.topbar-actions { grid-column: 3; margin-left: 16px; display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.topbar-actions {
+  flex-shrink: 0;
+  display: flex; align-items: center; gap: 10px;
+  margin-left: auto;
+}
 .fam-top-residente {
   font-size: 0.85rem; font-weight: 600; color: var(--primary);
   background: var(--primary-light);
@@ -217,6 +226,9 @@ small { font-size: 0.8rem; color: var(--text-muted); }
   max-width: 1200px;
   min-width: 0;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 /* ---------- Fam Sidebar ---------- */
@@ -359,6 +371,7 @@ small { font-size: 0.8rem; color: var(--text-muted); }
   display: grid; grid-template-columns: repeat(7, 1fr);
   gap: 4px; background: var(--bg-card); border-radius: var(--radius-md);
   overflow: hidden; box-shadow: var(--shadow-sm); border: var(--card-border);
+  grid-auto-rows: minmax(90px, auto);
 }
 .cal-day-header {
   text-align: center; font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
@@ -367,21 +380,39 @@ small { font-size: 0.8rem; color: var(--text-muted); }
   border-bottom: 1px solid var(--border-light);
 }
 .cal-day {
-  min-height: 80px; padding: 6px; border-radius: 6px;
+  min-height: 90px; padding: 6px; border-radius: 6px;
   background: var(--bg-card); cursor: pointer;
   transition: var(--tr);
   border: 1px solid transparent;
   display: flex; flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow: hidden;
 }
 .cal-day:hover { border-color: var(--primary-light); background: #FAFBFF; }
 .cal-day.today { border-color: var(--primary); background: var(--primary-light); }
 .cal-day.other-month { opacity: 0.35; }
 .cal-day-num { font-size: 0.82rem; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
 .cal-day-event {
-  font-size: 0.62rem; font-weight: 500;
-  padding: 1px 5px; border-radius: 4px; margin-bottom: 1px;
+  display: block;
+  font-size: 0.65rem; font-weight: 600;
+  padding: 3px 6px; border-radius: 4px; margin-top: 2px; margin-bottom: 1px;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+.cal-day-event.reunion-item {
+  display: block;
+  font-size: 0.65rem; font-weight: 600;
+  padding: 3px 6px; border-radius: 4px; margin-top: 2px; margin-bottom: 1px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+.cal-day-event[title] {
+  cursor: help;
 }
 .cal-day-event.taller-memoria { background: var(--lavanda); }
 .cal-day-event.laborterapia { background: var(--peach); }
@@ -761,7 +792,9 @@ textarea.form-control { resize: vertical; min-height: 80px; }
   .overlay.show { display: block; }
 
   .main-interno { min-height: auto; }
-  .topbar { padding: 12px 16px; top: auto; position: static; }
+  .topbar { padding: 10px 16px; position: relative; top: auto; gap: 8px; }
+  .page-title { font-size: 1.15rem; }
+  .topbar-actions { max-width: 200px; }
   .content-interno { padding: 16px; }
 
   .fam-bottom-nav { display: flex; }
@@ -772,7 +805,7 @@ textarea.form-control { resize: vertical; min-height: 80px; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .stat-num { font-size: 1.4rem; }
   .resident-grid { grid-template-columns: 1fr; }
-  .cal-day { min-height: 56px; padding: 4px; }
+  .cal-day { min-height: 60px; padding: 4px; }
   .cal-day-event { display: none; }
 
   .vitals-grid { grid-template-columns: repeat(2, 1fr); }
