@@ -130,6 +130,7 @@ small { font-size: 0.8rem; color: var(--text-muted); }
 .sidebar {
   width: var(--sidebar-w);
   min-width: var(--sidebar-w);
+  max-width: var(--sidebar-w);
   background: var(--sidebar-bg);
   border-right: var(--sidebar-border);
   box-shadow: var(--sidebar-shadow);
@@ -137,6 +138,7 @@ small { font-size: 0.8rem; color: var(--text-muted); }
   height: calc(100vh - 56px);
   position: sticky; top: 56px;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 20px 0 24px;
   z-index: 90;
 }
@@ -192,17 +194,19 @@ small { font-size: 0.8rem; color: var(--text-muted); }
 }
 .topbar {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
   padding: 16px 28px;
   background: var(--bg-card);
   border-bottom: 1px solid var(--border-color);
   min-height: 64px;
   position: sticky; top: 56px; z-index: 50;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 #menu-toggle, #fam-menu-btn { grid-column: 1; display: none; margin-right: 16px; }
-.page-title { grid-column: 2; font-size: 1.35rem; margin: 0; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.topbar-actions { grid-column: 3; margin-left: 16px; display: flex; align-items: center; gap: 10px; }
+.page-title { grid-column: 2; font-size: 1.35rem; margin: 0; min-width: 0; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; box-sizing: border-box; }
+.topbar-actions { grid-column: 3; margin-left: 16px; display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 .fam-top-residente {
   font-size: 0.85rem; font-weight: 600; color: var(--primary);
   background: var(--primary-light);
