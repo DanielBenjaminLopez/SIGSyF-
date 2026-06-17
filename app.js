@@ -9,12 +9,12 @@
   const TIPO_COLOR = { A: '#EF4444', B: '#F59E0B', C: '#10B981', D: '#2563EB' };
 
   const RESIDENTES = [
-    { id: 1, nombre: 'María López', edad: 78, hab: '101', ingreso: '12/03/2024', diagnostico: 'Alzheimer temprano', familiar: 'Sofía López', avatar: 'ML', color: '#7C3AED', tipo: 'B' },
-    { id: 2, nombre: 'Juan Pérez', edad: 82, hab: '102', ingreso: '05/01/2023', diagnostico: 'Parkinson', familiar: 'Ana Pérez', avatar: 'JP', color: '#2563EB', tipo: 'B' },
-    { id: 3, nombre: 'Rosa Giménez', edad: 75, hab: '103', ingreso: '20/08/2024', diagnostico: 'Diabetes tipo 2', familiar: 'Carlos Giménez', avatar: 'RG', color: '#10B981', tipo: 'C' },
-    { id: 4, nombre: 'Pedro Sánchez', edad: 80, hab: '104', ingreso: '15/06/2023', diagnostico: 'Recuperación ACV', familiar: 'Lucía Sánchez', avatar: 'PS', color: '#F97316', tipo: 'A' },
-    { id: 5, nombre: 'Ana Martínez', edad: 85, hab: '105', ingreso: '02/11/2022', diagnostico: 'Artrosis severa', familiar: 'Martín Martínez', avatar: 'AM', color: '#EC4899', tipo: 'A' },
-    { id: 6, nombre: 'Carlos López', edad: 55, hab: '201', ingreso: '01/02/2025', diagnostico: 'Lesión medular', familiar: 'Sofía López', avatar: 'CL', color: '#8B5CF6', tipo: 'B' },
+    { id: 1, nombre: 'María López', edad: 78, hab: '101', ingreso: '12/03/2024', diagnostico: 'Alzheimer temprano', familiar: 'Sofía López', avatar: 'ML', color: '#7C3AED', tipo: 'B', foto: 'https://picsum.photos/seed/maria-lopez-78/120/120.jpg' },
+    { id: 2, nombre: 'Juan Pérez', edad: 82, hab: '102', ingreso: '05/01/2023', diagnostico: 'Parkinson', familiar: 'Ana Pérez', avatar: 'JP', color: '#2563EB', tipo: 'B', foto: 'https://picsum.photos/seed/juan-perez-82/120/120.jpg' },
+    { id: 3, nombre: 'Rosa Giménez', edad: 75, hab: '103', ingreso: '20/08/2024', diagnostico: 'Diabetes tipo 2', familiar: 'Carlos Giménez', avatar: 'RG', color: '#10B981', tipo: 'C', foto: 'https://picsum.photos/seed/rosa-gimenez-75/120/120.jpg' },
+    { id: 4, nombre: 'Pedro Sánchez', edad: 80, hab: '104', ingreso: '15/06/2023', diagnostico: 'Recuperación ACV', familiar: 'Lucía Sánchez', avatar: 'PS', color: '#F97316', tipo: 'A', foto: 'https://picsum.photos/seed/pedro-sanchez-80/120/120.jpg' },
+    { id: 5, nombre: 'Ana Martínez', edad: 85, hab: '105', ingreso: '02/11/2022', diagnostico: 'Artrosis severa', familiar: 'Martín Martínez', avatar: 'AM', color: '#EC4899', tipo: 'A', foto: 'https://picsum.photos/seed/ana-martinez-85/120/120.jpg' },
+    { id: 6, nombre: 'Carlos López', edad: 55, hab: '201', ingreso: '01/02/2025', diagnostico: 'Lesión medular', familiar: 'Sofía López', avatar: 'CL', color: '#8B5CF6', tipo: 'B', foto: 'https://picsum.photos/seed/carlos-lopez-55/120/120.jpg' },
   ];
 
   const CATEGORIAS = ['Laborterapia', 'Actividad física', 'Estimulación cognitiva', 'Recreativa', 'Evento'];
@@ -360,23 +360,23 @@
       </div>
       <div class="section-block">
         <div class="section-title"><span class="ico">👤</span> Residentes</div>
-        <div class="resident-grid">
-          ${RESIDENTES.map(r => `
-            <div class="card resident-card" style="border-left:4px solid ${r.color}">
-              <div class="avatar" style="background:${r.color}">${r.avatar}</div>
-              <div class="resident-info">
-                <div class="resident-name">${r.nombre} <span class="badge" style="background:${TIPO_COLOR[r.tipo]};color:#fff;font-size:0.65rem;padding:2px 8px">Tipo ${r.tipo}</span></div>
-                <div class="resident-detail">Hab. ${r.hab} · ${r.diagnostico}</div>
-                <div class="resident-meta">
-                  <span class="badge badge-info">${r.edad} años</span>
-                  <span class="badge badge-neutral">Ingreso: ${r.ingreso}</span>
-                  <span class="badge badge-lavanda">Fam: ${r.familiar}</span>
-                  <span style="font-size:0.7rem;color:${TIPO_COLOR[r.tipo]};font-weight:600">${TIPO_DESC[r.tipo]}</span>
+          <div class="resident-grid">
+            ${RESIDENTES.map(r => `
+              <div class="card resident-card" style="border-left:4px solid ${r.color}">
+                <img class="resident-foto" src="${r.foto}" alt="${r.nombre}" loading="lazy" onerror="this.src='https://picsum.photos/seed/fallback/120/120.jpg'">
+                <div class="resident-info">
+                  <div class="resident-name">${r.nombre} <span class="badge" style="background:${TIPO_COLOR[r.tipo]};color:#fff;font-size:0.65rem;padding:2px 8px">Tipo ${r.tipo}</span></div>
+                  <div class="resident-detail">Hab. ${r.hab} · ${r.diagnostico}</div>
+                  <div class="resident-meta">
+                    <span class="badge badge-info">${r.edad} años</span>
+                    <span class="badge badge-neutral">Ingreso: ${r.ingreso}</span>
+                    <span class="badge badge-lavanda">Fam: ${r.familiar}</span>
+                    <span style="font-size:0.7rem;color:${TIPO_COLOR[r.tipo]};font-weight:600">${TIPO_DESC[r.tipo]}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          `).join('')}
-        </div>
+            `).join('')}
+          </div>
       </div>
     `;
     content.innerHTML = html;
@@ -921,7 +921,7 @@
     const res = residentePorId(currentFamResident);
     if (res) {
       famResName.textContent = res.nombre;
-      famTopRes.textContent = `${res.nombre} · Hab. ${res.hab}`;
+      famTopRes.innerHTML = `<img class="resident-foto" src="${res.foto}" alt="${res.nombre}" style="width:32px;height:32px;border-radius:50%;object-fit:cover;margin-right:8px;vertical-align:middle"> ${res.nombre} · Hab. ${res.hab}`;
     }
   }
 
@@ -985,8 +985,10 @@
       <div class="section-block">
         <div class="section-title"><span class="ico">👤</span> Resumen de ${res ? res.nombre : ''}</div>
         <div class="card">
-          <div class="card-body">
-            <p style="margin-bottom:8px"><strong>Diagnóstico:</strong> ${res ? res.diagnostico : ''} · <strong>Habitación:</strong> ${res ? res.hab : ''} · <strong>Ingreso:</strong> ${res ? res.ingreso : ''}</p>
+          <div class="card-body" style="display:flex;gap:16px;align-items:flex-start">
+            <img class="resident-foto" src="${res?.foto || ''}" alt="${res?.nombre || ''}" loading="lazy" onerror="this.src='https://picsum.photos/seed/fallback/120/120.jpg'" style="width:80px;height:80px;">
+            <div style="flex:1">
+              <p style="margin-bottom:8px"><strong>Diagnóstico:</strong> ${res ? res.diagnostico : ''} · <strong>Habitación:</strong> ${res ? res.hab : ''} · <strong>Ingreso:</strong> ${res ? res.ingreso : ''}</p>
             ${ultRep ? `
               <div class="section-divider"></div>
               <div class="section-title" style="font-size:0.95rem;margin-bottom:6px"><span class="ico">📋</span> Último Reporte</div>
