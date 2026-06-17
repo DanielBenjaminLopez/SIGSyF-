@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIGSyF — Sistema de Gestión de Vinculación Familiar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- ===== ENVIRONMENT SWITCHER ===== -->
+    <header class="env-bar">
+      <div class="env-bar-inner">
+        <div class="env-brand">
+          <span class="env-logo">SIGSyF</span>
+          <span class="env-divider">|</span>
+          <span class="env-subtitle">Residencia "La Fabiana"</span>
+        </div>
+        <div class="env-switch">
+          <button class="env-btn active" data-env="interno">
+            <span class="env-ico">🏥</span>
+            <span>Dashboard Interno</span>
+          </button>
+          <button class="env-btn" data-env="familiar">
+            <span class="env-ico">👨‍👩‍👧</span>
+            <span>Portal Familiar</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ================================================================ -->
+    <!-- ENTORNO 1: DASHBOARD INTERNO                                      -->
+    <!-- ================================================================ -->
+    <div id="env-interno" class="env-scene">
+
+      <!-- Sidebar Interna -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-user">
+          <div class="avatar" id="user-avatar">LM</div>
+          <div class="avatar-info">
+            <span class="avatar-name" id="user-name">Laura Mendoza</span>
+            <span class="avatar-role" id="user-role">Coordinadora General</span>
+          </div>
+        </div>
+        <nav class="sidebar-nav" id="internal-nav">
+          <button class="nav-item active" data-view="panel"><span class="nav-ico">📊</span><span>Panel General</span></button>
+          <button class="nav-item" data-view="calendario"><span class="nav-ico">📅</span><span>Calendario de Actividades</span></button>
+          <button class="nav-item" data-view="asistencia"><span class="nav-ico">✅</span><span>Asistencia y Coordinación</span></button>
+          <button class="nav-item" data-view="reportes"><span class="nav-ico">📋</span><span>Reportes de Salud</span></button>
+          <button class="nav-item" data-view="mensajes"><span class="nav-ico">💬</span><span>Centro de Mensajería</span></button>
+          <button class="nav-item" data-view="reuniones"><span class="nav-ico">🤝</span><span>Gestión de Reuniones</span></button>
+          <button class="nav-item" data-view="evaluaciones"><span class="nav-ico">📝</span><span>Evaluaciones Post-Actividad</span></button>
+        </nav>
+      </aside>
+
+      <div id="sidebar-overlay" class="overlay"></div>
+
+      <main class="main-interno" id="main-interno">
+        <header class="topbar">
+          <button id="menu-toggle" class="btn-ico" aria-label="Menú">☰</button>
+          <h1 class="page-title" id="page-title">Panel General</h1>
+          <div class="topbar-actions" id="topbar-actions">
+            <button class="btn btn-primary" id="btn-nueva-actividad">+ Nueva Actividad</button>
+          </div>
+        </header>
+        <div class="content-interno" id="content-interno"></div>
+      </main>
+    </div>
+
+    <!-- ================================================================ -->
+    <!-- ENTORNO 2: PORTAL FAMILIAR                                        -->
+    <!-- ================================================================ -->
+    <div id="env-familiar" class="env-scene" style="display:none;">
+
+      <!-- Sidebar Familiar (desktop) -->
+      <aside class="sidebar fam-sidebar" id="fam-sidebar">
+        <div class="sidebar-user">
+          <div class="avatar" style="background:var(--emerald-500);">SL</div>
+          <div class="avatar-info">
+            <span class="avatar-name" id="fam-name">Sofía López</span>
+            <span class="avatar-role">Familiar · Residente: <span id="fam-res-name">María López</span></span>
+          </div>
+        </div>
+
+        <div class="fam-sidebar-select">
+          <label>Mi Residente</label>
+          <select id="fam-resident-select"></select>
+        </div>
+
+        <nav class="sidebar-nav">
+          <div class="nav-group-label">Mi Familiar</div>
+          <button class="nav-item active" data-fam-view="inicio"><span class="nav-ico">📊</span><span>Inicio</span></button>
+          <button class="nav-item" data-fam-view="reportes"><span class="nav-ico">📋</span><span>Reportes de Salud</span></button>
+
+          <div class="nav-group-label">Actividades</div>
+          <button class="nav-item" data-fam-view="calendario"><span class="nav-ico">📅</span><span>Calendario</span></button>
+          <button class="nav-item" data-fam-view="invitaciones"><span class="nav-ico">🎟️</span><span>Invitaciones <span class="badge-count" id="inv-badge">3</span></span></button>
+
+          <div class="nav-group-label">Contacto</div>
+          <button class="nav-item" data-fam-view="mensajes"><span class="nav-ico">💬</span><span>Mensajes</span></button>
+          <button class="nav-item" data-fam-view="reuniones"><span class="nav-ico">🤝</span><span>Reuniones</span></button>
+        </nav>
+      </aside>
+
+      <div id="fam-overlay" class="overlay"></div>
+
+      <!-- Main Familiar -->
+      <main class="main-interno" id="fam-main">
+        <header class="topbar">
+          <button id="fam-menu-btn" class="btn-ico" aria-label="Menú">☰</button>
+          <h1 class="page-title" id="fam-page-title">Inicio</h1>
+          <div class="topbar-actions">
+            <span class="fam-top-residente" id="fam-top-residente">María López · Hab. 101</span>
+          </div>
+        </header>
+        <div class="content-interno" id="fam-content"></div>
+      </main>
+
+      <!-- Bottom Nav (mobile) -->
+      <nav class="fam-bottom-nav" id="fam-mobile-nav">
+        <button class="fam-nav-item active" data-fam-view="inicio"><span class="fn-ico">📊</span><span>Inicio</span></button>
+        <button class="fam-nav-item" data-fam-view="reportes"><span class="fn-ico">📋</span><span>Reportes</span></button>
+        <button class="fam-nav-item" data-fam-view="calendario"><span class="fn-ico">📅</span><span>Calendario</span></button>
+        <button class="fam-nav-item" data-fam-view="mensajes"><span class="fn-ico">💬</span><span>Mensajes</span></button>
+        <button class="fam-nav-item" data-fam-view="reuniones"><span class="fn-ico">🤝</span><span>Reuniones</span></button>
+      </nav>
+    </div>
+
+    <!-- ===== SHARED MODAL ===== -->
+    <div id="modal-overlay" class="modal-overlay" style="display:none;">
+      <div class="modal">
+        <div class="modal-head">
+          <h2 id="modal-title"></h2>
+          <button class="btn-ico" id="modal-close">✕</button>
+        </div>
+        <div class="modal-body" id="modal-body"></div>
+        <div class="modal-foot" id="modal-foot"></div>
+      </div>
+    </div>
+
+    <div id="toast-container" class="toast-container"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
