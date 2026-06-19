@@ -433,8 +433,13 @@
       $id('env-familiar').style.display = (env === 'familiar' || env === 'comunicacion') ? 'flex' : 'none';
       $$('.show-com').forEach(el => el.style.display = env === 'comunicacion' ? '' : 'none');
       $$('.show-fam').forEach(el => el.style.display = env === 'familiar' ? '' : 'none');
-      if (env === 'familiar' || env === 'comunicacion') renderFamView(currentFamView);
-      else renderInternalView(currentView);
+      if (env === 'familiar' || env === 'comunicacion') {
+        currentFamView = 'reportes';
+        renderFamView('reportes');
+      } else {
+        currentView = 'calendario';
+        renderInternalView('calendario');
+      }
     });
   });
 
