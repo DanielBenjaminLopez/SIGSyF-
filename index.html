@@ -24,7 +24,7 @@
         <div class="env-switch">
           <button class="env-btn active" data-env="interno">
             <span class="env-ico">🏥</span>
-            <span>Dashboard Interno</span>
+            <span>Panel Interno</span>
           </button>
           <button class="env-btn" data-env="familiar">
             <span class="env-ico">👨‍👩‍👧</span>
@@ -49,13 +49,14 @@
           </div>
         </div>
         <nav class="sidebar-nav" id="internal-nav">
-          <button class="nav-item active" data-view="panel"><span class="nav-ico">📊</span><span>Panel General</span></button>
-          <button class="nav-item" data-view="calendario"><span class="nav-ico">📅</span><span>Calendario de Actividades</span></button>
+          <div class="nav-group-label">Actividades y Talleres</div>
+          <button class="nav-item active" data-view="calendario"><span class="nav-ico">📅</span><span>Calendario de Actividades</span></button>
           <button class="nav-item" data-view="asistencia"><span class="nav-ico">✅</span><span>Asistencia y Coordinación</span></button>
-          <button class="nav-item" data-view="reportes"><span class="nav-ico">📋</span><span>Reportes de Salud</span></button>
-          <button class="nav-item" data-view="mensajes"><span class="nav-ico">💬</span><span>Centro de Mensajería</span></button>
-          <button class="nav-item" data-view="reuniones"><span class="nav-ico">🤝</span><span>Gestión de Reuniones</span></button>
           <button class="nav-item" data-view="evaluaciones"><span class="nav-ico">📝</span><span>Evaluaciones Post-Actividad</span></button>
+
+          <div class="nav-group-label">Familias y Salud</div>
+          <button class="nav-item" data-view="reportes"><span class="nav-ico">📋</span><span>Reportes de Salud</span></button>
+          <button class="nav-item" data-view="reuniones"><span class="nav-ico">🤝</span><span>Gestión de Reuniones</span></button>
         </nav>
       </aside>
 
@@ -64,7 +65,7 @@
       <main class="main-interno" id="main-interno">
         <header class="topbar">
           <button id="menu-toggle" class="btn-ico" aria-label="Menú">☰</button>
-          <h1 class="page-title" id="page-title">Panel General</h1>
+          <h1 class="page-title" id="page-title">Calendario de Actividades</h1>
           <div class="topbar-actions" id="topbar-actions">
             <button class="btn btn-primary" id="btn-nueva-actividad">+ Nueva Actividad</button>
           </div>
@@ -95,15 +96,13 @@
 
         <nav class="sidebar-nav">
           <div class="nav-group-label">Mi Familiar</div>
-          <button class="nav-item active" data-fam-view="inicio"><span class="nav-ico">📊</span><span>Inicio</span></button>
-          <button class="nav-item" data-fam-view="reportes"><span class="nav-ico">📋</span><span>Reportes de Salud</span></button>
+          <button class="nav-item active" data-fam-view="reportes"><span class="nav-ico">📋</span><span>Reportes de Salud</span></button>
 
           <div class="nav-group-label">Actividades</div>
           <button class="nav-item" data-fam-view="calendario"><span class="nav-ico">📅</span><span>Calendario</span></button>
           <button class="nav-item" data-fam-view="invitaciones"><span class="nav-ico">🎟️</span><span>Invitaciones <span class="badge-count" id="inv-badge">3</span></span></button>
 
           <div class="nav-group-label">Contacto</div>
-          <button class="nav-item" data-fam-view="mensajes"><span class="nav-ico">💬</span><span>Mensajes</span></button>
           <button class="nav-item" data-fam-view="reuniones"><span class="nav-ico">🤝</span><span>Reuniones</span></button>
         </nav>
       </aside>
@@ -114,7 +113,7 @@
       <main class="main-interno" id="fam-main">
         <header class="topbar">
           <button id="fam-menu-btn" class="btn-ico" aria-label="Menú">☰</button>
-          <h1 class="page-title" id="fam-page-title">Inicio</h1>
+          <h1 class="page-title" id="fam-page-title">Reportes de Salud</h1>
           <div class="topbar-actions">
             <span class="fam-top-residente" id="fam-top-residente">María López · Hab. 101</span>
           </div>
@@ -124,10 +123,8 @@
 
       <!-- Bottom Nav (mobile) -->
       <nav class="fam-bottom-nav" id="fam-mobile-nav">
-        <button class="fam-nav-item active" data-fam-view="inicio"><span class="fn-ico">📊</span><span>Inicio</span></button>
-        <button class="fam-nav-item" data-fam-view="reportes"><span class="fn-ico">📋</span><span>Reportes</span></button>
+        <button class="fam-nav-item active" data-fam-view="reportes"><span class="fn-ico">📋</span><span>Reportes</span></button>
         <button class="fam-nav-item" data-fam-view="calendario"><span class="fn-ico">📅</span><span>Calendario</span></button>
-        <button class="fam-nav-item" data-fam-view="mensajes"><span class="fn-ico">💬</span><span>Mensajes</span></button>
         <button class="fam-nav-item" data-fam-view="reuniones"><span class="fn-ico">🤝</span><span>Reuniones</span></button>
       </nav>
     </div>

@@ -163,6 +163,9 @@ small { font-size: 0.8rem; color: var(--text-muted); }
   font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px;
   color: var(--text-muted); padding: 16px 10px 6px;
 }
+#internal-nav .nav-group-label {
+  padding: 14px 12px 6px;
+}
 .nav-item {
   display: flex; align-items: center; gap: 10px;
   padding: 10px 12px; border-radius: 10px;
@@ -807,11 +810,13 @@ textarea.form-control { resize: vertical; min-height: 80px; }
   .resident-grid { grid-template-columns: 1fr; }
   .cal-day { min-height: 60px; padding: 4px; }
   .cal-day-event { display: none; }
+  .cal-layout { grid-template-columns: 1fr; }
 
   .vitals-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* ---------- Print ---------- */
+/* Calendar Layout */
+.cal-layout { display: grid; grid-template-columns: 1fr 320px; gap: 20px; align-items: start; }
 @media print {
   .env-bar, .sidebar, .fam-bottom-nav, .topbar, .modal-overlay, .toast-container { display: none !important; }
   .env-scene { display: block !important; }

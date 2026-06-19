@@ -126,93 +126,127 @@
   }
   REPORTES.sort((a, b) => b.fecha - a.fecha);
 
+  const REPORT_CHATS = {};
+  const chatTemplates = [
+    { from: 'Sofía López', text: 'Buenas tardes, quería consultar sobre el estado de mamá según este reporte.', time: new Date(YEAR, MONTH, 14, 9, 15), side: 'received' },
+    { from: 'Laura Mendoza', text: 'Hola Sofía, todo conforme al reporte. Se mantiene estable y participando de actividades.', time: new Date(YEAR, MONTH, 14, 10, 30), side: 'sent' },
+    { from: 'Sofía López', text: 'Perfecto, ¿hay algo que deba tener en cuenta para la próxima visita?', time: new Date(YEAR, MONTH, 14, 11, 0), side: 'received' },
+    { from: 'Laura Mendoza', text: 'Podés traer ropa más liviana para la semana que viene. Estamos preparando actividades al aire libre.', time: new Date(YEAR, MONTH, 14, 11, 45), side: 'sent' },
+  ];
+  REPORTES.forEach((r, i) => {
+    const offset = i * 3;
+    REPORT_CHATS[r.id] = {
+      id: 'rch-' + i,
+      reporteId: r.id,
+      residente: r.residente,
+      participants: ['Familiar (Sofía)', 'Equipo Interdisciplinario'],
+      messages: chatTemplates.map((m, mi) => ({
+        ...m,
+        from: m.from,
+        text: mi === 0 ? `Consulto por el reporte de ${r.residente} (${fmtDate(r.fecha)}): ${r.evolucion.substring(0, 60)}...` : m.text,
+        time: new Date(YEAR, MONTH, 14 + Math.floor(offset / 6), 9 + offset, (mi * 15) % 60),
+      })),
+    };
+  });
+
   const REUNIONES = [
     {
       id: 'reu-1',
-      titulo: 'Reunión Mensual con Familias — Evaluación General',
-      fecha: new Date(YEAR, MONTH, 18, 10, 0),
+      titulo: 'Reunión mensual: María López',
+      fecha: new Date(YEAR, MONTH, 20, 10, 0),
       modalidad: 'Presencial',
       lugar: 'Salón Comedor Principal',
       proxima: true,
-      participantes: ['Laura M. (Coordinación)', 'Dr. García', 'Fam. López', 'Fam. Pérez', 'Fam. Giménez'],
-      minuta: 'Se compartió la evolución general de los residentes con las familias presentes. Se resolvieron dudas sobre rutinas de medicación y horarios de visita. Próximo encuentro: 18 del mes que viene.',
+      participantes: ['Laura M. (Coordinación)', 'Dr. García', 'Sofía López (Familiar)'],
+      minuta: 'Se compartió la evolución general de María con la familia. Se resolvieron dudas sobre rutinas de medicación y horarios de visita. Se acordó seguimiento mensual.',
       conformidad: 'Alta',
     },
     {
       id: 'reu-2',
-      titulo: 'Entrevista Familiar — Ingreso de Familiar de Rosa Giménez',
-      fecha: new Date(YEAR, MONTH - 1, 20, 11, 0),
+      titulo: 'Reunión mensual: Rosa Giménez',
+      fecha: new Date(YEAR, MONTH, 21, 11, 0),
       modalidad: 'Virtual',
       link: 'https://meet.google.com/abc-defg-hij',
-      proxima: false,
+      proxima: true,
       participantes: ['Dr. García', 'Lic. Fernández', 'Carlos Giménez (Familiar)'],
-      minuta: 'Se realizó la entrevista de ingreso con Carlos, hijo de Rosa. Se explicaron las rutinas diarias, el plan de alimentación para diabeticos y los talleres disponibles. Carlos manifestó conformidad con el servicio.',
+      minuta: 'Evaluación mensual de Rosa. Se revisaron avances en estimulación cognitiva y se ajustó el plan de alimentación. La familia manifestó conformidad.',
       conformidad: 'Alta',
     },
     {
       id: 'reu-3',
-      titulo: 'Taller de Orientación para Familias — Cómo acompañar a tu familiar',
-      fecha: new Date(YEAR, MONTH - 2, 15, 14, 0),
+      titulo: 'Reunión mensual: Juan Pérez',
+      fecha: new Date(YEAR, MONTH, 23, 14, 0),
       modalidad: 'Presencial',
-      lugar: 'Salón Multiusos',
-      proxima: false,
-      participantes: ['Laura M. (Coordinación)', 'Lic. Fernández', '12 familiares'],
-      minuta: 'Taller participativo donde se abordaron estrategias de comunicación, manejo de emociones y pautas de visita. Muy buena recepción de las familias. Se entregaron guías impresas.',
+      lugar: 'Consultorio 1',
+      proxima: true,
+      participantes: ['Laura M.', 'Dr. García', 'Kinesióloga', 'Ana Pérez (Familiar)'],
+      minuta: 'Revisión del plan de atención de Juan. Se evaluaron avances en fisioterapia y se ajustó plan nutricional para diabetes tipo 2.',
       conformidad: 'Alta',
     },
     {
       id: 'reu-4',
-      titulo: 'Encuentro Familiar — Evaluación Semestral',
-      fecha: new Date(YEAR, MONTH - 3, 10, 9, 30),
+      titulo: 'Reunión mensual: Carlos Sánchez',
+      fecha: new Date(YEAR, MONTH, 24, 10, 0),
       modalidad: 'Presencial',
       lugar: 'Sala de Reuniones 1er Piso',
-      proxima: false,
-      participantes: ['Laura M.', 'Dr. García', 'Fam. López', 'Fam. Sánchez', 'Fam. Martínez'],
-      minuta: 'Evaluación semestral con las familias. Se presentaron los avances de cada residente, estadísticas de participación en talleres y resultados de encuestas de satisfacción. Se recibieron sugerencias para mejorar la comunicación diaria.',
+      proxima: true,
+      participantes: ['Laura M.', 'Dr. García', 'Enfermería', 'Martín Sánchez (Familiar)'],
+      minuta: 'Seguimiento del ingreso de Carlos. Se evaluó adaptación, participación en actividades y estado general.',
       conformidad: 'Alta',
     },
     {
       id: 'reu-5',
-      titulo: 'Reunión de Contención y Apoyo Familiar',
-      fecha: new Date(YEAR, MONTH + 1, 5, 16, 0),
+      titulo: 'Reunión mensual: María López',
+      fecha: new Date(YEAR, MONTH, 25, 10, 0),
       modalidad: 'Virtual',
       link: 'https://meet.google.com/xyz-uvw-rst',
-      proxima: false,
-      participantes: ['Lic. Fernández', 'Psicóloga', 'Familiares'],
-      minuta: 'Espacio de contención emocional para familias de residentes con deterioro cognitivo avanzado. Se compartieron experiencias y herramientas de afrontamiento. Asistieron 8 familiares.',
+      proxima: true,
+      participantes: ['Laura M.', 'Dr. García', 'Sofía López (Familiar)'],
+      minuta: 'Revisión mensual de María. Se compartieron avances en talleres de memoria y se reforzó el plan de medicación. La familia se mostró conforme.',
       conformidad: 'Alta',
     },
     {
       id: 'reu-6',
-      titulo: 'Jornada de Puertas Abiertas para Familias',
-      fecha: new Date(YEAR, MONTH - 4, 22, 11, 0),
+      titulo: 'Reunión mensual: Rosa Giménez',
+      fecha: new Date(YEAR, MONTH, 26, 11, 0),
       modalidad: 'Presencial',
-      lugar: 'Instalaciones de la Residencia',
-      proxima: false,
-      participantes: ['Todo el equipo interdisciplinario', '20+ familiares'],
-      minuta: 'Jornada donde las familias recorrieron las instalaciones, participaron de talleres junto a los residentes y compartieron un almuerzo comunitario. Actividad muy valorada por todos los asistentes.',
+      lugar: 'Salón Comedor Principal',
+      proxima: true,
+      participantes: ['Dr. García', 'Lic. Fernández', 'Carlos Giménez (Familiar)'],
+      minuta: 'Encuentro mensual con la familia Giménez. Se evaluó el estado general de Rosa y se planificaron actividades para el próximo mes.',
       conformidad: 'Alta',
     },
     {
       id: 'reu-7',
-      titulo: 'Consulta Familiar con Equipo Interdisciplinario — Familia Pérez',
-      fecha: new Date(YEAR, MONTH - 4, 8, 15, 0),
-      modalidad: 'Presencial',
-      lugar: 'Consultorio 2',
-      proxima: false,
+      titulo: 'Reunión mensual: Juan Pérez',
+      fecha: new Date(YEAR, MONTH, 27, 14, 0),
+      modalidad: 'Virtual',
+      link: 'https://meet.google.com/def-ghi-jkl',
+      proxima: true,
       participantes: ['Dr. García', 'Lic. Fernández', 'Ana Pérez (Familiar)'],
-      minuta: 'Consulta solicitada por la familia Pérez para evaluar la evolución motriz de Juan. Se ajustó el plan de kinesiología y se acordó un seguimiento quincenal. La familia se retiró conforme.',
-      conformidad: 'Media',
+      minuta: 'Evaluación trimestral de Juan. Se revisaron resultados de kinesiología y se ajustaron tiempos de actividad física.',
+      conformidad: 'Alta',
     },
     {
       id: 'reu-8',
-      titulo: 'Charla Informativa: Beneficios de la Estimulación Cognitiva',
-      fecha: new Date(YEAR, MONTH - 5, 12, 10, 30),
-      modalidad: 'Virtual',
-      link: 'https://meet.google.com/rst-uvw-xyz',
-      proxima: false,
-      participantes: ['Lic. Fernández', '15 familiares'],
-      minuta: 'Charla virtual donde se explicaron los beneficios de la estimulación cognitiva en adultos mayores. Se mostraron ejemplos de ejercicios que las familias pueden replicar en casa durante las visitas.',
+      titulo: 'Reunión mensual: María López',
+      fecha: new Date(YEAR, MONTH, 28, 10, 0),
+      modalidad: 'Presencial',
+      lugar: 'Sala de Reuniones 1er Piso',
+      proxima: true,
+      participantes: ['Laura M.', 'Dr. García', 'Sofía López (Familiar)'],
+      minuta: 'Seguimiento bimestral de María. Se revisaron resultados de estimulación cognitiva y se confirmó estabilidad del tratamiento.',
+      conformidad: 'Alta',
+    },
+    {
+      id: 'reu-9',
+      titulo: 'Reunión mensual: Carlos Sánchez',
+      fecha: new Date(YEAR, MONTH, 30, 11, 0),
+      modalidad: 'Presencial',
+      lugar: 'Consultorio 2',
+      proxima: true,
+      participantes: ['Laura M.', 'Dr. García', 'Martín Sánchez (Familiar)'],
+      minuta: 'Seguimiento tras el ingreso de Carlos. Se presentó el plan de atención y se definieron objetivos a corto plazo.',
       conformidad: 'Alta',
     },
   ];
@@ -309,7 +343,7 @@
   // INTERNAL DASHBOARD
   // ========================================================================
 
-  let currentView = 'panel';
+  let currentView = 'calendario';
   const content = $id('content-interno');
   const pageTitle = $id('page-title');
 
@@ -318,7 +352,7 @@
     pageTitle.textContent = {
       panel: 'Panel General', calendario: 'Calendario de Actividades',
       asistencia: 'Asistencia y Coordinación', reportes: 'Reportes de Salud',
-      mensajes: 'Centro de Mensajería', reuniones: 'Gestión de Reuniones',
+      reuniones: 'Gestión de Reuniones',
       evaluaciones: 'Evaluaciones Post-Actividad',
     }[view] || 'Panel General';
 
@@ -326,10 +360,7 @@
       b.classList.toggle('active', b.dataset.view === view);
     });
 
-    if (RENDERS[view]) RENDERS[view]();
-    else content.innerHTML = '<p>Sección en construcción</p>';
-
-    // Update topbar actions
+    // Update topbar actions FIRST (before render, so buttons exist)
     const actions = $id('topbar-actions');
     if (view === 'panel') {
       actions.innerHTML = '<button class="btn btn-primary" id="btn-nueva-actividad">+ Nueva Actividad</button>';
@@ -340,6 +371,9 @@
     } else {
       actions.innerHTML = '';
     }
+
+    if (RENDERS[view]) RENDERS[view]();
+    else content.innerHTML = '<p>Sección en construcción</p>';
   }
 
   const RENDERS = {};
@@ -385,7 +419,125 @@
 
   // --- Calendario ---
   RENDERS.calendario = function () {
-    renderCalendar(content, ACTIVIDADES, 'actividades');
+    const proximas = ACTIVIDADES.filter(a => a.fecha >= NOW).sort((a, b) => a.fecha - b.fecha).slice(0, 8);
+
+    let html = `
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+        <div></div>
+        <button class="btn btn-primary" id="btn-crear-actividad">+ Crear Actividad</button>
+      </div>
+      <div class="cal-layout">
+        <div id="cal-grid-container"></div>
+        <div>
+          <div class="card" style="padding:16px">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+              <span style="font-size:1.1rem">📌</span>
+              <h3 style="font-family:var(--font-body);font-size:0.95rem;font-weight:600;margin:0">Próximas Actividades</h3>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              ${proximas.length ? proximas.map(a => {
+                const catColors = { 'Estimulación cognitiva': 'var(--lavanda)', 'Actividad física': 'var(--emerald-500)', 'Laborterapia': 'var(--peach)', 'Recreativa': 'var(--sky)', 'Evento': 'var(--primary)' };
+                const color = catColors[a.categoria] || 'var(--primary)';
+                const dia = a.fecha.getDate();
+                const mes = a.fecha.toLocaleDateString('es-AR', { month: 'short' });
+                const hora = fmtTime(a.fecha);
+                return `
+                  <div style="display:flex;gap:10px;align-items:flex-start;padding:10px;border-radius:8px;background:var(--bg-body);border:1px solid var(--border-light)">
+                    <div style="min-width:44px;text-align:center;background:${color};color:#fff;border-radius:8px;padding:6px 4px;line-height:1.2">
+                      <div style="font-size:0.65rem;text-transform:uppercase;font-weight:600">${mes}</div>
+                      <div style="font-size:1.1rem;font-weight:700">${dia}</div>
+                    </div>
+                    <div style="flex:1;min-width:0">
+                      <div style="font-size:0.82rem;font-weight:600;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${a.titulo}</div>
+                      <div style="font-size:0.72rem;color:var(--text-muted)">${hora} · ${a.lugar}</div>
+                      <div style="font-size:0.7rem;color:var(--text-muted);margin-top:2px">${a.tallerista}</div>
+                    </div>
+                  </div>
+                `;
+              }).join('') : '<p style="font-size:0.82rem;color:var(--text-muted);text-align:center;padding:20px 0">No hay actividades próximas</p>'}
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    content.innerHTML = html;
+    renderCalendar($id('cal-grid-container'), ACTIVIDADES, 'actividades');
+
+    // Wire crear actividad button
+    const btnCrear = $id('btn-crear-actividad');
+    if (btnCrear) {
+      btnCrear.addEventListener('click', function () {
+        openModal('Crear Nueva Actividad', `
+          <div style="min-width:400px">
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div>
+                <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:4px">Nombre de la actividad</label>
+                <input type="text" class="form-control" id="new-act-nombre" placeholder="Ej: Taller de Memoria" />
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                <div>
+                  <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:4px">Fecha</label>
+                  <input type="date" class="form-control" id="new-act-fecha" />
+                </div>
+                <div>
+                  <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:4px">Hora</label>
+                  <input type="time" class="form-control" id="new-act-hora" value="10:00" />
+                </div>
+              </div>
+              <div>
+                <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:4px">Categoría</label>
+                <select class="form-control" id="new-act-cat">
+                  ${CATEGORIAS.map(c => `<option value="${c}">${c}</option>`).join('')}
+                </select>
+              </div>
+              <div>
+                <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:4px">Lugar</label>
+                <select class="form-control" id="new-act-lugar">
+                  ${lugares.map(l => `<option value="${l}">${l}</option>`).join('')}
+                </select>
+              </div>
+              <div>
+                <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:4px">Tallerista</label>
+                <select class="form-control" id="new-act-tallerista">
+                  <option>Laura Mendoza</option><option>Dr. García</option><option>Lic. Fernández</option><option>Prof. Ruiz</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        `, `<button class="btn btn-secondary" onclick="document.getElementById('modal-overlay').style.display='none'">Cancelar</button>
+            <button class="btn btn-primary" id="btn-guardar-actividad">Guardar Actividad</button>`);
+        const btnSave = $id('btn-guardar-actividad');
+        if (btnSave) {
+          btnSave.addEventListener('click', function () {
+            const nombre = $id('new-act-nombre')?.value.trim();
+            const fechaVal = $id('new-act-fecha')?.value;
+            const hora = $id('new-act-hora')?.value;
+            const cat = $id('new-act-cat')?.value;
+            const lugar = $id('new-act-lugar')?.value;
+            const tallerista = $id('new-act-tallerista')?.value;
+            if (!nombre || !fechaVal) { showToast('Completá nombre y fecha', 'warning'); return; }
+            const [h, m] = (hora || '10:00').split(':').map(Number);
+            const fecha = new Date(fechaVal + 'T12:00:00');
+            fecha.setHours(h, m);
+            const catClass = CAT_CLASSES[cat] || 'evento';
+            ACTIVIDADES.push({
+              id: 'act-new-' + Date.now(),
+              titulo: nombre,
+              categoria: cat,
+              fecha: fecha,
+              lugar: lugar,
+              tallerista: tallerista,
+              residentesIds: [1, 2, 3],
+              invitaciones: [],
+            });
+            ACTIVIDADES.sort((a, b) => a.fecha - b.fecha);
+            closeModal();
+            showToast('Actividad "' + nombre + '" creada exitosamente', 'success');
+            RENDERS.calendario();
+          });
+        }
+      });
+    }
   };
 
   function renderCalendar(container, items, type) {
@@ -548,7 +700,8 @@
                       <div class="vital-item"><div class="vital-label">SatO₂</div><div class="vital-value">${r.signos.sat}</div></div>
                     </div>
                   </div>
-                  <div class="card-foot" style="display:flex;justify-content:flex-end">
+                  <div class="card-foot" style="display:flex;justify-content:flex-end;gap:8px">
+                    <button class="btn btn-sm btn-outline report-chat-btn" data-rep-id="${r.id}" style="position:relative">💬 Chat<span style="position:absolute;top:-6px;right:-6px;background:var(--danger);color:#fff;font-size:0.6rem;font-weight:700;min-width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;padding:0 3px">1</span></button>
                     <button class="btn btn-sm btn-outline ver-reporte-btn" data-rep-id="${r.id}">📄 Ver informe completo</button>
                   </div>
                 </div>
@@ -596,177 +749,157 @@
         `, '<button class="btn btn-secondary" onclick="document.getElementById(\'modal-overlay\').style.display=\'none\'">Cerrar</button>');
       });
     });
-  };
-
-  // --- Mensajes (WhatsApp-style) ---
-  RENDERS.mensajes = function () {
-    const contactos = THREADS.map(t => ({
-      id: t.id,
-      name: t.participants.filter(p => !p.includes('Laura'))[0] || t.participants[1],
-      subject: t.subject,
-      lastMsg: t.messages[t.messages.length - 1],
-      messages: t.messages,
-      unread: t.messages.filter(m => m.side === 'received' && new Date(m.time) > new Date(YEAR, MONTH, NOW.getDate() - 2)).length,
-      avatar: t.id === 't-1' ? 'EN' : t.id === 't-2' ? 'CO' : 'DI',
-      color: t.id === 't-1' ? '#10B981' : t.id === 't-2' ? '#7C3AED' : '#EF4444',
-    }));
-
-    let html = `
-      <div class="section-block">
-        <div class="section-title"><span class="ico">💬</span> Centro de Mensajería</div>
-        <div class="chat-app" id="chat-app">
-          <div class="chat-list" id="chat-list">
-            <div class="chat-list-header">💬 Conversaciones</div>
-            ${contactos.map((c, i) => `
-              <div class="chat-list-item ${i === 0 ? 'active' : ''}" data-chat-id="${c.id}">
-                <div class="chat-list-avatar" style="background:${c.color}">${c.avatar}</div>
-                <div class="chat-list-info">
-                  <div class="chat-list-name">${c.name}</div>
-                  <div class="chat-list-preview">${c.lastMsg.text}</div>
-                </div>
-                <div class="chat-list-meta">
-                  <div class="chat-list-time">${fmtTime(c.lastMsg.time)}</div>
-                  ${c.unread > 0 ? `<span class="chat-list-unread">${c.unread}</span>` : ''}
-                </div>
+    // Wire up "Chat" buttons
+    content.querySelectorAll('.report-chat-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const rid = this.dataset.repId;
+        const r = REPORTES.find(x => x.id === rid);
+        const chat = REPORT_CHATS[rid];
+        if (!r || !chat) return;
+        const chatHtml = `
+          <div style="display:flex;flex-direction:column;height:420px;min-width:360px">
+            <div style="display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--border-color);margin-bottom:12px">
+              <div class="chat-list-avatar" style="background:#7C3AED;width:36px;height:36px;font-size:0.7rem">SL</div>
+              <div>
+                <div style="font-weight:600;font-size:0.9rem">Sofía López</div>
+                <div style="font-size:0.75rem;color:var(--emerald-500)">● En línea</div>
               </div>
-            `).join('')}
+              <span class="badge badge-info" style="margin-left:auto">${r.residente}</span>
+            </div>
+            <div id="report-chat-msgs" style="flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:4px 0">
+              ${chat.messages.map(m => `
+                <div class="msg-bubble ${m.side}" style="max-width:75%;align-self:${m.side === 'sent' ? 'flex-end' : 'flex-start'}">
+                  <strong style="font-size:0.78rem">${m.from}</strong><br>
+                  ${m.text}
+                  <span class="msg-time">${fmtTime(m.time)} · ${m.side === 'sent' ? 'Visto' : 'Recibido'}</span>
+                </div>
+              `).join('')}
+            </div>
+            <div style="display:flex;gap:8px;padding-top:12px;border-top:1px solid var(--border-color);margin-top:8px">
+              <input type="text" class="form-control" id="report-chat-input" placeholder="Escribí un mensaje..." style="flex:1" />
+              <button class="btn btn-primary btn-sm" id="report-chat-send" data-rep-id="${rid}">Enviar</button>
+            </div>
           </div>
-          <div class="chat-conversation" id="chat-conversation">
-            ${renderChatConv(contactos[0])}
-          </div>
-        </div>
-      </div>
-    `;
-    content.innerHTML = html;
-
-    // Chat list click handler
-    const chatList = $id('chat-list');
-    const convArea = $id('chat-conversation');
-    if (chatList) {
-      chatList.addEventListener('click', function (e) {
-        const item = e.target.closest('.chat-list-item');
-        if (!item) return;
-        chatList.querySelectorAll('.chat-list-item').forEach(el => el.classList.remove('active'));
-        item.classList.add('active');
-        const c = contactos.find(x => x.id === item.dataset.chatId);
-        if (c) convArea.innerHTML = renderChatConv(c);
-      });
-    }
-    // Wire send button (delegation, once)
-    wireChatSend(convArea, contactos);
-  };
-
-  function wireChatSend(container, contactos) {
-    if (!container) return;
-    container.addEventListener('click', function (e) {
-      const btn = e.target.closest('.msg-wa-send');
-      if (!btn) return;
-      const cid = btn.dataset.chatId;
-      const chat = contactos.find(x => x.id === cid);
-      if (!chat) return;
-      const input = document.getElementById('msg-input-' + cid);
-      if (!input) return;
-      const txt = input.value.trim();
-      if (!txt) return;
-      const msgs = document.getElementById('conv-msgs-' + cid);
-      if (!msgs) return;
-      const bubble = document.createElement('div');
-      bubble.className = 'msg-bubble sent';
-      bubble.style.maxWidth = '75%';
-      bubble.innerHTML = `<strong style="font-size:0.78rem">Laura Mendoza</strong><br>${txt}<span class="msg-time">${fmtTime(new Date())} · Visto</span>`;
-      msgs.appendChild(bubble);
-      msgs.scrollTop = msgs.scrollHeight;
-      input.value = '';
-      setTimeout(() => {
-        const res = document.createElement('div');
-        res.className = 'msg-bubble received';
-        res.style.maxWidth = '75%';
-        const respuestas = ['Gracias por tu mensaje. Te responderemos a la brevedad.', 'Hemos recibido tu consulta. El equipo la está revisando.', 'Queda registrado. Te confirmamos por esta vía.'];
-        res.innerHTML = `<strong style="font-size:0.78rem">${chat.name}</strong><br>${respuestas[Math.floor(Math.random() * respuestas.length)]}<span class="msg-time">${fmtTime(new Date())} · Recibido</span>`;
-        msgs.appendChild(res);
-        msgs.scrollTop = msgs.scrollHeight;
-      }, 1200);
-    });
-    // Enter to send
-    container.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') {
-        const input = e.target.closest('.chat-conv-input')?.querySelector('input');
-        if (input) {
-          const sendBtn = input.closest('.chat-conv-input')?.querySelector('.msg-wa-send');
-          if (sendBtn) sendBtn.click();
+        `;
+        openModal('Chat — Reporte de ' + r.residente, chatHtml,
+          '<button class="btn btn-secondary" onclick="document.getElementById(\'modal-overlay\').style.display=\'none\'">Cerrar</button>');
+        const msgsEl = document.getElementById('report-chat-msgs');
+        if (msgsEl) msgsEl.scrollTop = msgsEl.scrollHeight;
+        const sendBtn = document.getElementById('report-chat-send');
+        const inputEl = document.getElementById('report-chat-input');
+        if (sendBtn && inputEl) {
+          sendBtn.addEventListener('click', function () {
+            const txt = inputEl.value.trim();
+            if (!txt) return;
+            const bubble = document.createElement('div');
+            bubble.className = 'msg-bubble sent';
+            bubble.style.maxWidth = '75%';
+            bubble.style.alignSelf = 'flex-end';
+            bubble.innerHTML = '<strong style="font-size:0.78rem">Laura Mendoza</strong><br>' + txt + '<span class="msg-time">' + fmtTime(new Date()) + ' · Visto</span>';
+            msgsEl.appendChild(bubble);
+            msgsEl.scrollTop = msgsEl.scrollHeight;
+            inputEl.value = '';
+            setTimeout(() => {
+              const reply = document.createElement('div');
+              reply.className = 'msg-bubble sent';
+              reply.style.maxWidth = '75%';
+              reply.style.alignSelf = 'flex-end';
+              reply.innerHTML = '<strong style="font-size:0.78rem">Laura Mendoza</strong><br>Recibimos tu mensaje, te responderemos a la brevedad.<span class="msg-time">' + fmtTime(new Date()) + ' · Enviado</span>';
+              msgsEl.appendChild(reply);
+              msgsEl.scrollTop = msgsEl.scrollHeight;
+            }, 1200);
+          });
+          inputEl.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') sendBtn.click();
+          });
         }
-      }
+      });
     });
-  }
-
-  function renderChatConv(chat) {
-    if (!chat) return '<div class="chat-empty">💬<span>Seleccioná una conversación</span></div>';
-    return `
-      <div class="chat-conv-header">
-        <div class="chat-list-avatar" style="background:${chat.color};width:38px;height:38px;font-size:0.7rem">${chat.avatar}</div>
-        <div>
-          <div class="chat-conv-name">${chat.name}</div>
-          <div class="chat-conv-status">● En línea</div>
-        </div>
-      </div>
-      <div class="chat-conv-messages" id="conv-msgs-${chat.id}" style="flex:1">
-        ${chat.messages.map(m => `
-          <div class="msg-bubble ${m.side}" style="max-width:75%">
-            <strong style="font-size:0.78rem">${m.from}</strong><br>
-            ${m.text}
-            <span class="msg-time">${fmtTime(m.time)} · ${m.side === 'sent' ? 'Visto' : 'Recibido'}</span>
-          </div>
-        `).join('')}
-      </div>
-      <div class="chat-conv-input">
-        <input type="text" class="form-control" placeholder="Escribí un mensaje..." id="msg-input-${chat.id}" />
-        <button class="btn btn-primary btn-sm msg-wa-send" data-chat-id="${chat.id}">Enviar</button>
-      </div>
-    `;
-  }
+  };
 
   // --- Reuniones (INTERNO) — now with private calendar ---
   RENDERS.reuniones = function () {
     const prox = REUNIONES.find(r => r.proxima);
-    const pasadas = REUNIONES.filter(r => !r.proxima);
+    const todas = REUNIONES.length;
+    const presenciales = REUNIONES.filter(r => r.modalidad === 'Presencial').length;
+    const virtuales = REUNIONES.filter(r => r.modalidad === 'Virtual').length;
+    const conformidadAlta = REUNIONES.filter(r => r.conformidad === 'Alta').length;
+    const próxCount = REUNIONES.filter(r => r.proxima).length;
 
     let html = `
-      <div class="section-block">
-        <div class="section-title"><span class="ico">🤝</span> Gestión de Reuniones</div>
-        <div class="cols-2">
-          <div>
-            <h3 style="font-family:var(--font-body);font-size:1rem;margin-bottom:12px;font-weight:600;">📅 Calendario de Reuniones</h3>
-            <div id="reuniones-cal"></div>
-          </div>
-          <div>
-            <div class="card" style="padding:16px">
-              <h4 style="font-size:0.9rem;margin-bottom:10px;font-family:var(--font-body)">📌 Próxima reunión</h4>
-              ${prox ? `
-                <div style="display:flex;gap:12px;align-items:center">
-                  <div class="meeting-date-box" style="min-width:48px;padding:6px 10px">
-                    <div class="meeting-date-num" style="font-size:1.2rem">${prox.fecha.getDate()}</div>
-                    <div class="meeting-date-month" style="font-size:0.6rem">${prox.fecha.toLocaleDateString('es-AR', { month: 'short' })}</div>
-                  </div>
-                  <div style="flex:1;min-width:0">
-                    <strong style="font-size:0.85rem">${prox.titulo}</strong>
-                    <div style="display:flex;gap:8px;font-size:0.75rem;color:var(--text-secondary);flex-wrap:wrap;margin-top:2px">
-                      <span>🕐 ${fmtTime(prox.fecha)}</span>
-                      <span>📍 ${prox.lugar || 'Virtual'}</span>
-                      <span class="badge badge-info">${prox.modalidad}</span>
-                    </div>
+      <div class="cols-2" style="gap:20px">
+        <div>
+          <h3 style="font-family:var(--font-body);font-size:1rem;margin-bottom:12px;font-weight:600;">📅 Calendario de Reuniones</h3>
+          <div id="reuniones-cal"></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="card" style="padding:16px">
+            <h4 style="font-size:0.9rem;margin-bottom:10px;font-family:var(--font-body)">📌 Próxima reunión</h4>
+            ${prox ? `
+              <div style="display:flex;gap:12px;align-items:center">
+                <div class="meeting-date-box" style="min-width:48px;padding:6px 10px">
+                  <div class="meeting-date-num" style="font-size:1.2rem">${prox.fecha.getDate()}</div>
+                  <div class="meeting-date-month" style="font-size:0.6rem">${prox.fecha.toLocaleDateString('es-AR', { month: 'short' })}</div>
+                </div>
+                <div style="flex:1;min-width:0">
+                  <strong style="font-size:0.85rem">${prox.titulo}</strong>
+                  <div style="display:flex;gap:8px;font-size:0.75rem;color:var(--text-secondary);flex-wrap:wrap;margin-top:2px">
+                    <span>🕐 ${fmtTime(prox.fecha)}</span>
+                    <span>📍 ${prox.lugar || 'Virtual'}</span>
+                    <span class="badge badge-info">${prox.modalidad}</span>
                   </div>
                 </div>
-              ` : '<p style="font-size:0.85rem;color:var(--text-muted)">No hay reuniones próximas agendadas.</p>'}
+              </div>
+            ` : '<p style="font-size:0.85rem;color:var(--text-muted)">No hay reuniones próximas.</p>'}
+          </div>
+
+          <div class="card" style="padding:16px">
+            <h4 style="font-size:0.9rem;margin-bottom:10px;font-family:var(--font-body)">📊 Resumen</h4>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <div style="text-align:center;padding:10px;background:var(--bg-body);border-radius:8px">
+                <div style="font-size:1.3rem;font-weight:700;color:var(--primary)">${todas}</div>
+                <div style="font-size:0.7rem;color:var(--text-muted)">Total</div>
+              </div>
+              <div style="text-align:center;padding:10px;background:var(--bg-body);border-radius:8px">
+                <div style="font-size:1.3rem;font-weight:700;color:var(--emerald-500)">${próxCount}</div>
+                <div style="font-size:0.7rem;color:var(--text-muted)">Próximas</div>
+              </div>
+              <div style="text-align:center;padding:10px;background:var(--bg-body);border-radius:8px">
+                <div style="font-size:1.3rem;font-weight:700;color:var(--peach)">${presenciales}</div>
+                <div style="font-size:0.7rem;color:var(--text-muted)">Presenciales</div>
+              </div>
+              <div style="text-align:center;padding:10px;background:var(--bg-body);border-radius:8px">
+                <div style="font-size:1.3rem;font-weight:700;color:var(--sky)">${virtuales}</div>
+                <div style="font-size:0.7rem;color:var(--text-muted)">Virtuales</div>
+              </div>
             </div>
-            <div class="card" style="padding:16px;margin-top:12px">
-              <h4 style="font-size:0.9rem;margin-bottom:8px;font-family:var(--font-body)">📊 Totales</h4>
-              <p style="font-size:0.82rem;color:var(--text-secondary)">
-                ${REUNIONES.length} reuniones registradas · 
-                ${REUNIONES.filter(r => r.conformidad === 'Alta').length} con conformidad alta ·
-                ${REUNIONES.filter(r => r.modalidad === 'Presencial').length} presenciales ·
-                ${REUNIONES.filter(r => r.modalidad === 'Virtual').length} virtuales
-              </p>
+          </div>
+
+          <div class="card" style="padding:16px">
+            <h4 style="font-size:0.9rem;margin-bottom:8px;font-family:var(--font-body)">👥 Participantes Frecuentes</h4>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              ${(() => {
+                const freq = {};
+                REUNIONES.forEach(r => r.participantes.forEach(p => { freq[p] = (freq[p] || 0) + 1; }));
+                return Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([name, count]) => `
+                  <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.82rem">
+                    <span style="color:var(--text-secondary)">${name}</span>
+                    <span class="badge badge-neutral">${count} reuniones</span>
+                  </div>
+                `).join('');
+              })()}
             </div>
+          </div>
+
+          <div class="card" style="padding:16px">
+            <h4 style="font-size:0.9rem;margin-bottom:8px;font-family:var(--font-body)">✅ Conformidad</h4>
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="flex:1;height:8px;background:var(--bg-body);border-radius:4px;overflow:hidden">
+                <div style="height:100%;width:${(conformidadAlta / todas * 100).toFixed(0)}%;background:var(--emerald-500);border-radius:4px"></div>
+              </div>
+              <span style="font-size:0.82rem;font-weight:600;color:var(--emerald-500)">${(conformidadAlta / todas * 100).toFixed(0)}%</span>
+            </div>
+            <p style="font-size:0.75rem;color:var(--text-muted);margin-top:4px">${conformidadAlta} de ${todas} reuniones con conformidad alta</p>
           </div>
         </div>
       </div>
@@ -806,6 +939,106 @@
     const calContainer = $id('reuniones-cal');
     if (calContainer) {
       renderCalendar(calContainer, REUNIONES, 'reuniones');
+    }
+
+    // Wire "Programar Reunión" button
+    const btnNueva = $id('btn-nueva-reunion');
+    if (btnNueva) {
+      btnNueva.addEventListener('click', function () {
+        openModal('Programar Nueva Reunión', `
+          <div style="min-width:420px">
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div>
+                <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:4px">Nombre del residente</label>
+                <select class="form-control" id="new-reu-residente">
+                  ${RESIDENTES.map(r => `<option value="${r.id}">${r.nombre}</option>`).join('')}
+                </select>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                <div>
+                  <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:4px">Fecha</label>
+                  <input type="date" class="form-control" id="new-reu-fecha" />
+                </div>
+                <div>
+                  <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:4px">Hora</label>
+                  <input type="time" class="form-control" id="new-reu-hora" value="10:00" />
+                </div>
+              </div>
+              <div>
+                <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:4px">Modalidad</label>
+                <select class="form-control" id="new-reu-modalidad">
+                  <option value="Presencial">Presencial</option>
+                  <option value="Virtual">Virtual</option>
+                </select>
+              </div>
+              <div id="new-reu-lugar-wrap">
+                <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:4px">Lugar</label>
+                <select class="form-control" id="new-reu-lugar">
+                  <option>Salón Comedor Principal</option>
+                  <option>Sala de Reuniones 1er Piso</option>
+                  <option>Consultorio 1</option>
+                  <option>Consultorio 2</option>
+                  <option>Salón Multiusos</option>
+                </select>
+              </div>
+              <div>
+                <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:4px">Participantes (separar con coma)</label>
+                <input type="text" class="form-control" id="new-reu-participantes" placeholder="Dr. García, Lic. Fernández, Fam. López" />
+              </div>
+            </div>
+          </div>
+        `, `<button class="btn btn-secondary" onclick="document.getElementById('modal-overlay').style.display='none'">Cancelar</button>
+            <button class="btn btn-primary" id="btn-guardar-reunion">Guardar Reunión</button>`);
+
+        // Toggle lugar/link fields based on modalidad
+        const modalidadSel = $id('new-reu-modalidad');
+        const lugarWrap = $id('new-reu-lugar-wrap');
+        if (modalidadSel && lugarWrap) {
+          modalidadSel.addEventListener('change', function () {
+            if (this.value === 'Virtual') {
+              lugarWrap.innerHTML = '<label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:4px">Link de reunión</label><input type="url" class="form-control" id="new-reu-link" placeholder="https://meet.google.com/..." />';
+            } else {
+              lugarWrap.innerHTML = '<label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:4px">Lugar</label><select class="form-control" id="new-reu-lugar"><option>Salón Comedor Principal</option><option>Sala de Reuniones 1er Piso</option><option>Consultorio 1</option><option>Consultorio 2</option><option>Salón Multiusos</option></select>';
+            }
+          });
+        }
+
+        const btnSave = $id('btn-guardar-reunion');
+        if (btnSave) {
+          btnSave.addEventListener('click', function () {
+            const resId = $id('new-reu-residente')?.value;
+            const res = residentePorId(Number(resId));
+            const fechaVal = $id('new-reu-fecha')?.value;
+            const hora = $id('new-reu-hora')?.value;
+            const modalidad = $id('new-reu-modalidad')?.value;
+            const participantesRaw = $id('new-reu-participantes')?.value || '';
+            if (!fechaVal) { showToast('Seleccioná una fecha', 'warning'); return; }
+            const [h, m] = (hora || '10:00').split(':').map(Number);
+            const fecha = new Date(fechaVal + 'T12:00:00');
+            fecha.setHours(h, m);
+            const participantes = participantesRaw.split(',').map(s => s.trim()).filter(Boolean);
+            if (res) participantes.unshift('Fam. ' + res.nombre.split(' ').pop());
+            const lugar = modalidad === 'Presencial' ? ($id('new-reu-lugar')?.value || '') : '';
+            const link = modalidad === 'Virtual' ? ($id('new-reu-link')?.value || '') : '';
+            REUNIONES.push({
+              id: 'reu-new-' + Date.now(),
+              titulo: 'Reunión mensual: ' + (res ? res.nombre : 'Residente'),
+              fecha: fecha,
+              modalidad: modalidad,
+              lugar: lugar,
+              link: link,
+              proxima: true,
+              participantes: participantes,
+              minuta: 'Reunión programada. La minuta será completada tras la reunión.',
+              conformidad: 'Pendiente',
+            });
+            REUNIONES.sort((a, b) => a.fecha - b.fecha);
+            closeModal();
+            showToast('Reunión programada exitosamente', 'success');
+            RENDERS.reuniones();
+          });
+        }
+      });
     }
   };
 
@@ -908,7 +1141,7 @@
   // PORTAL FAMILIAR
   // ========================================================================
 
-  let currentFamView = 'inicio';
+  let currentFamView = 'reportes';
   let currentFamResident = 1; // María López by default
   const famContent = $id('fam-content');
   const famPageTitle = $id('fam-page-title');
@@ -950,7 +1183,6 @@
       reportes: 'Reportes de Salud',
       calendario: 'Calendario de Actividades',
       invitaciones: 'Invitaciones',
-      mensajes: 'Centro de Mensajería',
       reuniones: 'Reuniones y Seguimiento',
     };
     famPageTitle.textContent = titles[view] || 'Inicio';
@@ -1045,10 +1277,8 @@
 
     let html = `
       <div class="info-banner">🔒 Información confidencial y trazable. Solo accesible para familiares autorizados. Fuente: Historial clínico Nexup.</div>
-      <div class="cols-2-60-40">
-        <div>
-          <div class="section-title" style="font-size:1rem"><span class="ico">📋</span> Historial de Reportes</div>
-          ${reps.length ? reps.slice(0, 6).map(r => {
+      <div class="section-title" style="font-size:1rem"><span class="ico">📋</span> Historial de Reportes</div>
+      ${reps.length ? reps.slice(0, 6).map(r => {
             const estClass = { 'Estable': 'badge-success', 'En observación': 'badge-warning', 'Mejorando': 'badge-info' }[r.estadoGeneral] || 'badge-neutral';
             return `
               <div class="card card-accent-${r.estadoGeneral === 'Estable' ? 'g' : r.estadoGeneral === 'En observación' ? 'w' : 'p'}" style="margin-bottom:14px">
@@ -1067,94 +1297,17 @@
                 </div>
                 <div class="card-foot" style="display:flex;justify-content:space-between;align-items:center;font-size:0.75rem">
                   <span style="color:var(--text-muted)">📎 Integración Nexup</span>
-                  <button class="btn btn-xs btn-outline ver-reporte-fam-btn" data-rep-id="${r.id}">📄 Ver informe completo</button>
+                  <div style="display:flex;gap:6px">
+                    <button class="btn btn-xs btn-outline ver-reporte-fam-btn" data-rep-id="${r.id}">📄 Ver informe completo</button>
+                    <button class="btn btn-xs btn-primary fam-consulta-btn" data-rep-id="${r.id}">💬 Consultar</button>
+                  </div>
                 </div>
               </div>
             `;
           }).join('') : '<p>No hay reportes disponibles para este residente.</p>'}
-        </div>
-
-        <div class="chat-ia-col">
-          <div class="section-title" style="font-size:1rem"><span class="ico">🤖</span> Asistente IA</div>
-          <div class="chat-ia" id="chat-ia">
-            <div class="chat-ia-header">
-              <h3>Consultas sobre el reporte</h3>
-              <small>Preguntame detalles específicos sobre la evolución de ${residentePorId(currentFamResident)?.nombre || 'tu familiar'}</small>
-            </div>
-            <div class="chat-ia-messages" id="chat-ia-msgs">
-              <div class="chat-ia-msg bot">👋 Hola, soy el Asistente Virtual de la Residencia. Puedo ayudarte a interpretar los reportes clínicos de tu familiar. ¿Qué querés saber?</div>
-            </div>
-            <div class="chat-ia-suggestions">
-              <button class="chat-ia-chip" data-prompt="¿Cómo estuvo su presión esta semana?">¿Cómo estuvo su presión?</button>
-              <button class="chat-ia-chip" data-prompt="¿Participó en los talleres de memoria?">¿Participó en talleres?</button>
-              <button class="chat-ia-chip" data-prompt="Explicame el ajuste de medicación">Explicame ajuste de medicación</button>
-              <button class="chat-ia-chip" data-prompt="¿Cómo fue su evolución general?">¿Evolución general?</button>
-            </div>
-            <div class="chat-ia-input">
-              <input type="text" class="form-control" id="chat-ia-input" placeholder="Escribí tu consulta..." />
-              <button class="btn btn-primary btn-sm" id="chat-ia-send">Enviar</button>
-            </div>
-            <div class="chat-ia-footer">La IA procesa datos del informe. Para emergencias médicas, contactá directamente al equipo.</div>
-          </div>
-        </div>
-      </div>
     `;
     famContent.innerHTML = html;
 
-    // Wire up AI Chat
-    const chatMsgs = $id('chat-ia-msgs');
-    const chatInput = $id('chat-ia-input');
-    const chatSend = $id('chat-ia-send');
-
-    function addChatMsg(text, side) {
-      const div = document.createElement('div');
-      div.className = 'chat-ia-msg ' + side;
-      div.textContent = text;
-      chatMsgs.appendChild(div);
-      chatMsgs.scrollTop = chatMsgs.scrollHeight;
-    }
-
-    function iaRespond(prompt) {
-      addChatMsg(prompt, 'user');
-      setTimeout(() => {
-        const reps = reportsForResident();
-        const lastRep = reps[0];
-        const responses = {
-          'presión': lastRep ? `En el último reporte (${fmtDate(lastRep.fecha)}), su presión arterial fue de ${lastRep.signos.presion}, dentro de parámetros normales para su edad y condición.` : 'No tengo datos de presión en los reportes cargados.',
-          'taller': lastRep ? `Según el reporte del ${fmtDate(lastRep.fecha)}: "${lastRep.evolucion.toLowerCase().includes('particip') ? lastRep.evolucion : 'No se menciona participación específica en talleres en el último reporte.'}"` : 'No hay reportes cargados para consultar.',
-          'medicación': lastRep ? `El último reporte indica que continúa con su plan de medicación habitual. Para cambios específicos, consultá directamente con el equipo médico.` : 'No tengo información sobre medicación en los reportes actuales.',
-          'evolución': lastRep ? `Su estado general es **${lastRep.estadoGeneral}**. ${lastRep.evolucion}` : 'No hay reportes disponibles.',
-        };
-        let respuesta = 'No tengo información específica sobre esa consulta en los reportes cargados. ¿Podés reformular tu pregunta?';
-        for (const [key, val] of Object.entries(responses)) {
-          if (prompt.toLowerCase().includes(key)) {
-            respuesta = val;
-            break;
-          }
-        }
-        addChatMsg(respuesta, 'bot');
-      }, 600);
-    }
-
-    if (chatSend) {
-      chatSend.addEventListener('click', function () {
-        const txt = chatInput.value.trim();
-        if (!txt) return;
-        iaRespond(txt);
-        chatInput.value = '';
-      });
-    }
-    if (chatInput) {
-      chatInput.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') { chatSend?.click(); }
-      });
-    }
-    // Chip buttons
-    $$('.chat-ia-chip').forEach(chip => {
-      chip.addEventListener('click', function () {
-        iaRespond(this.dataset.prompt);
-      });
-    });
     // Wire up "Ver informe completo" buttons
     famContent.querySelectorAll('.ver-reporte-fam-btn').forEach(btn => {
       btn.addEventListener('click', function () {
@@ -1190,6 +1343,69 @@
             </div>
           </div>
         `, '<button class="btn btn-secondary" onclick="document.getElementById(\'modal-overlay\').style.display=\'none\'">Cerrar</button>');
+      });
+    });
+    // Wire up "Consultar" buttons — open chat modal per report
+    famContent.querySelectorAll('.fam-consulta-btn').forEach(btn => {
+      btn.addEventListener('click', function () {
+        const rid = this.dataset.repId;
+        const chat = REPORT_CHATS[rid];
+        const r = REPORTES.find(x => x.id === rid);
+        if (!chat || !r) return;
+        const chatBody = `
+          <div style="display:flex;flex-direction:column;height:400px">
+            <div style="display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--border);margin-bottom:12px">
+              <div style="width:36px;height:36px;border-radius:50%;background:#10B981;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.7rem">EI</div>
+              <div>
+                <div style="font-weight:600;font-size:0.85rem">Consulta: ${r.residente}</div>
+                <div style="font-size:0.75rem;color:var(--muted)">● En línea</div>
+              </div>
+            </div>
+            <div class="chat-conv-messages" id="fam-rchat-msgs" style="flex:1;overflow-y:auto;padding:8px 0">
+              ${chat.messages.map(m => `
+                <div class="msg-bubble ${m.side}" style="max-width:75%;margin-bottom:10px">
+                  <strong style="font-size:0.78rem">${m.from}</strong><br>
+                  ${m.text}
+                  <span class="msg-time">${fmtTime(m.time)} · ${m.side === 'received' ? 'Leído' : 'Entregado'}</span>
+                </div>
+              `).join('')}
+            </div>
+            <div style="display:flex;gap:8px;padding-top:12px;border-top:1px solid var(--border)">
+              <input type="text" class="form-control" id="fam-rchat-input" placeholder="Escribí tu consulta..." />
+              <button class="btn btn-primary btn-sm" id="fam-rchat-send">Enviar</button>
+            </div>
+          </div>
+        `;
+        openModal('💬 Consulta — ' + r.residente, chatBody, '<button class="btn btn-secondary" onclick="document.getElementById(\'modal-overlay\').style.display=\'none\'">Cerrar</button>');
+        // Wire send inside modal
+        setTimeout(() => {
+          const sendBtn = document.getElementById('fam-rchat-send');
+          const input = document.getElementById('fam-rchat-input');
+          const msgs = document.getElementById('fam-rchat-msgs');
+          if (!sendBtn || !input || !msgs) return;
+          const doSend = () => {
+            const txt = input.value.trim();
+            if (!txt) return;
+            const bubble = document.createElement('div');
+            bubble.className = 'msg-bubble sent';
+            bubble.style.maxWidth = '75%';
+            bubble.innerHTML = `<strong style="font-size:0.78rem">Sofía López</strong><br>${txt}<span class="msg-time">${fmtTime(new Date())} · Entregado</span>`;
+            msgs.appendChild(bubble);
+            msgs.scrollTop = msgs.scrollHeight;
+            input.value = '';
+            setTimeout(() => {
+              const res = document.createElement('div');
+              res.className = 'msg-bubble received';
+              res.style.maxWidth = '75%';
+              const respuestas = ['Gracias por tu consulta. El equipo la está revisando.', 'Hemos recibido tu mensaje. Te responderemos pronto.', 'Consulta registrada. Te confirmamos novedades.'];
+              res.innerHTML = `<strong style="font-size:0.78rem">Equipo Interdisciplinario</strong><br>${respuestas[Math.floor(Math.random() * respuestas.length)]}<span class="msg-time">${fmtTime(new Date())} · Leído</span>`;
+              msgs.appendChild(res);
+              msgs.scrollTop = msgs.scrollHeight;
+            }, 1200);
+          };
+          sendBtn.addEventListener('click', doSend);
+          input.addEventListener('keydown', e => { if (e.key === 'Enter') doSend(); });
+        }, 100);
       });
     });
   };
@@ -1352,132 +1568,6 @@
     });
   };
 
-  // --- Mensajes (WhatsApp-style) ---
-  FAM_RENDERS.mensajes = function () {
-    const isFamiliar = true;
-    const contactos = THREADS.map(t => ({
-      id: t.id,
-      name: t.participants.filter(p => !p.includes('Sofía') && !p.includes('Familiar'))[0] || t.participants[1],
-      subject: t.subject,
-      lastMsg: t.messages[t.messages.length - 1],
-      messages: t.messages,
-      unread: t.messages.filter(m => m.side === 'received' && new Date(m.time) > new Date(YEAR, MONTH, NOW.getDate() - 3)).length,
-      avatar: t.id === 't-1' ? 'EN' : t.id === 't-2' ? 'CO' : 'DI',
-      color: t.id === 't-1' ? '#10B981' : t.id === 't-2' ? '#7C3AED' : '#EF4444',
-    }));
-
-    let html = `
-      <div class="section-block">
-        <div class="section-title"><span class="ico">💬</span> Mensajería</div>
-        <div class="chat-app" id="fam-chat-app">
-          <div class="chat-list" id="fam-chat-list">
-            <div class="chat-list-header">💬 Conversaciones</div>
-            ${contactos.map((c, i) => `
-              <div class="chat-list-item ${i === 0 ? 'active' : ''}" data-chat-id="${c.id}">
-                <div class="chat-list-avatar" style="background:${c.color}">${c.avatar}</div>
-                <div class="chat-list-info">
-                  <div class="chat-list-name">${c.name}</div>
-                  <div class="chat-list-preview">${c.lastMsg.text}</div>
-                </div>
-                <div class="chat-list-meta">
-                  <div class="chat-list-time">${fmtTime(c.lastMsg.time)}</div>
-                  ${c.unread > 0 ? `<span class="chat-list-unread">${c.unread}</span>` : ''}
-                </div>
-              </div>
-            `).join('')}
-          </div>
-          <div class="chat-conversation" id="fam-chat-conv">
-            ${renderFamChatConv(contactos[0])}
-          </div>
-        </div>
-      </div>
-    `;
-    famContent.innerHTML = html;
-
-    const chatList = $id('fam-chat-list');
-    const convArea = $id('fam-chat-conv');
-    if (chatList) {
-      chatList.addEventListener('click', function (e) {
-        const item = e.target.closest('.chat-list-item');
-        if (!item) return;
-        chatList.querySelectorAll('.chat-list-item').forEach(el => el.classList.remove('active'));
-        item.classList.add('active');
-        const c = contactos.find(x => x.id === item.dataset.chatId);
-        if (c) convArea.innerHTML = renderFamChatConv(c);
-      });
-    }
-    wireFamChatSend(convArea, contactos);
-  };
-
-  function renderFamChatConv(chat) {
-    if (!chat) return '<div class="chat-empty">💬<span>Seleccioná una conversación</span></div>';
-    return `
-      <div class="chat-conv-header">
-        <div class="chat-list-avatar" style="background:${chat.color};width:38px;height:38px;font-size:0.7rem">${chat.avatar}</div>
-        <div>
-          <div class="chat-conv-name">${chat.name}</div>
-          <div class="chat-conv-status">● En línea</div>
-        </div>
-      </div>
-      <div class="chat-conv-messages" id="fam-cmsg-${chat.id}" style="flex:1">
-        ${chat.messages.map(m => `
-          <div class="msg-bubble ${m.side}" style="max-width:75%">
-            <strong style="font-size:0.78rem">${m.from}</strong><br>
-            ${m.text}
-            <span class="msg-time">${fmtTime(m.time)} · ${m.side === 'received' ? 'Leído por la institución' : 'Entregado'}</span>
-          </div>
-        `).join('')}
-      </div>
-      <div class="chat-conv-input">
-        <input type="text" class="form-control" placeholder="Escribí un mensaje..." id="fam-input-${chat.id}" />
-        <button class="btn btn-primary btn-sm fam-msg-send" data-chat-id="${chat.id}">Enviar</button>
-      </div>
-    `;
-  }
-
-  function wireFamChatSend(container, contactos) {
-    if (!container) return;
-    container.addEventListener('click', function (e) {
-      const btn = e.target.closest('.fam-msg-send');
-      if (!btn) return;
-      const cid = btn.dataset.chatId;
-      const chat = contactos.find(x => x.id === cid);
-      if (!chat) return;
-      const input = document.getElementById('fam-input-' + cid);
-      if (!input) return;
-      const txt = input.value.trim();
-      if (!txt) return;
-      const msgs = document.getElementById('fam-cmsg-' + cid);
-      if (!msgs) return;
-      const bubble = document.createElement('div');
-      bubble.className = 'msg-bubble sent';
-      bubble.style.maxWidth = '75%';
-      bubble.innerHTML = `<strong style="font-size:0.78rem">Sofía López</strong><br>${txt}<span class="msg-time">${fmtTime(new Date())} · Entregado</span>`;
-      msgs.appendChild(bubble);
-      msgs.scrollTop = msgs.scrollHeight;
-      input.value = '';
-      setTimeout(() => {
-        const res = document.createElement('div');
-        res.className = 'msg-bubble received';
-        res.style.maxWidth = '75%';
-        const respuestas = ['Gracias por tu mensaje. Te responderemos a la brevedad.', 'Hemos recibido tu consulta. El equipo la está revisando.', 'Queda registrado. Te confirmamos por esta vía.'];
-        const who = cid === 't-1' ? 'Enfermería' : cid === 't-2' ? 'Coordinación' : 'Administración';
-        res.innerHTML = `<strong style="font-size:0.78rem">${who}</strong><br>${respuestas[Math.floor(Math.random() * respuestas.length)]}<span class="msg-time">${fmtTime(new Date())} · Leído por la institución</span>`;
-        msgs.appendChild(res);
-        msgs.scrollTop = msgs.scrollHeight;
-      }, 1200);
-    });
-    container.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter') {
-        const input = e.target.closest('.chat-conv-input')?.querySelector('input');
-        if (input) {
-          const sendBtn = input.closest('.chat-conv-input')?.querySelector('.fam-msg-send');
-          if (sendBtn) sendBtn.click();
-        }
-      }
-    });
-  }
-
   // --- Reuniones ---
   FAM_RENDERS.reuniones = function () {
     const prox = REUNIONES.find(r => r.proxima);
@@ -1608,7 +1698,7 @@
   updateFamResidentInfo();
 
   // Render initial views
-  renderInternalView('panel');
-  renderFamView('inicio');
+  renderInternalView('calendario');
+  renderFamView('reportes');
 
 })();
