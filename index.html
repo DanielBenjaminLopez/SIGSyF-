@@ -6,7 +6,7 @@
   <title>SIGSyF — Sistema de Gestión de Vinculación Familiar</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏥</text></svg>">
 </head>
@@ -24,7 +24,11 @@
         <div class="env-switch">
           <button class="env-btn active" data-env="interno">
             <span class="env-ico">🏥</span>
-            <span>Panel Interno</span>
+            <span>Actividades de Recreación</span>
+          </button>
+          <button class="env-btn" data-env="comunicacion">
+            <span class="env-ico">💬</span>
+            <span>Comunicación con familias</span>
           </button>
           <button class="env-btn" data-env="familiar">
             <span class="env-ico">👨‍👩‍👧</span>
@@ -53,10 +57,6 @@
           <button class="nav-item active" data-view="calendario"><span class="nav-ico">📅</span><span>Calendario de Actividades</span></button>
           <button class="nav-item" data-view="asistencia"><span class="nav-ico">✅</span><span>Asistencia y Coordinación</span></button>
           <button class="nav-item" data-view="evaluaciones"><span class="nav-ico">📝</span><span>Evaluaciones Post-Actividad</span></button>
-
-          <div class="nav-group-label">Familias y Salud</div>
-          <button class="nav-item" data-view="reportes"><span class="nav-ico">📋</span><span>Reportes de Salud</span></button>
-          <button class="nav-item" data-view="reuniones"><span class="nav-ico">🤝</span><span>Gestión de Reuniones</span></button>
         </nav>
       </aside>
 
@@ -81,29 +81,41 @@
 
       <!-- Sidebar Familiar (desktop) -->
       <aside class="sidebar fam-sidebar" id="fam-sidebar">
-        <div class="sidebar-user">
+        <div class="sidebar-user show-fam">
           <div class="avatar" style="background:var(--emerald-500);">SL</div>
           <div class="avatar-info">
             <span class="avatar-name" id="fam-name">Sofía López</span>
             <span class="avatar-role">Familiar · Residente: <span id="fam-res-name">María López</span></span>
           </div>
         </div>
+        <div class="sidebar-user show-com" style="display:none">
+          <div class="avatar" style="background:var(--primary);">LM</div>
+          <div class="avatar-info">
+            <span class="avatar-name">Laura Mendoza</span>
+            <span class="avatar-role">Coordinadora General</span>
+          </div>
+        </div>
 
-        <div class="fam-sidebar-select">
+        <div class="fam-sidebar-select show-fam">
           <label>Mi Residente</label>
           <select id="fam-resident-select"></select>
         </div>
 
         <nav class="sidebar-nav">
-          <div class="nav-group-label">Mi Familiar</div>
-          <button class="nav-item active" data-fam-view="reportes"><span class="nav-ico">📋</span><span>Reportes de Salud</span></button>
-
-          <div class="nav-group-label">Actividades</div>
-          <button class="nav-item" data-fam-view="calendario"><span class="nav-ico">📅</span><span>Calendario</span></button>
-          <button class="nav-item" data-fam-view="invitaciones"><span class="nav-ico">🎟️</span><span>Invitaciones <span class="badge-count" id="inv-badge">3</span></span></button>
-
-          <div class="nav-group-label">Contacto</div>
-          <button class="nav-item" data-fam-view="reuniones"><span class="nav-ico">🤝</span><span>Reuniones</span></button>
+          <div class="show-com" style="display:none">
+            <div class="nav-group-label">Familias y Salud</div>
+            <button class="nav-item active" data-fam-view="reportes"><span class="nav-ico">📋</span><span>Reportes de Salud</span></button>
+            <button class="nav-item" data-fam-view="reuniones-staff"><span class="nav-ico">📊</span><span>Gestión de Reuniones</span></button>
+          </div>
+          <div class="show-fam">
+            <div class="nav-group-label">Mi Familiar</div>
+            <button class="nav-item active" data-fam-view="reportes"><span class="nav-ico">📋</span><span>Reportes de Salud</span></button>
+            <div class="nav-group-label">Actividades</div>
+            <button class="nav-item" data-fam-view="calendario"><span class="nav-ico">📅</span><span>Calendario</span></button>
+            <button class="nav-item" data-fam-view="invitaciones"><span class="nav-ico">🎟️</span><span>Invitaciones <span class="badge-count" id="inv-badge">3</span></span></button>
+            <div class="nav-group-label">Contacto</div>
+            <button class="nav-item" data-fam-view="reuniones"><span class="nav-ico">🤝</span><span>Reuniones</span></button>
+          </div>
         </nav>
       </aside>
 
@@ -115,7 +127,7 @@
           <button id="fam-menu-btn" class="btn-ico" aria-label="Menú">☰</button>
           <h1 class="page-title" id="fam-page-title">Reportes de Salud</h1>
           <div class="topbar-actions">
-            <span class="fam-top-residente" id="fam-top-residente">María López · Hab. 101</span>
+            <span class="fam-top-residente show-fam" id="fam-top-residente">María López · Hab. 101</span>
           </div>
         </header>
         <div class="content-interno" id="fam-content"></div>

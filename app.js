@@ -113,7 +113,7 @@
       residenteId: res.id,
       residente: res.nombre,
       fecha: d,
-      periodo: i < 8 ? 'Semanal' : 'Mensual',
+      periodo: i < 14 ? 'Semanal' : 'Mensual',
       estadoGeneral: ['Estable', 'En observación', 'Mejorando', 'Estable', 'Estable', 'Mejorando'][i % 6],
       evolucion: evoluciones[i % evoluciones.length],
       signos: {
@@ -157,6 +157,7 @@
       modalidad: 'Virtual',
       link: 'https://meet.google.com/juan-apr-10',
       proxima: true,
+      estado: 'agendada',
       participantes: ['Dr. García', 'Lic. Fernández', 'Ana Pérez (Familiar)'],
       minuta: 'Pendiente de realización.',
       conformidad: 'Pendiente',
@@ -168,6 +169,7 @@
       modalidad: 'Presencial',
       lugar: 'Sala de Reuniones 1er Piso',
       proxima: true,
+      estado: 'cancelada',
       participantes: ['Laura M.', 'Dr. García', 'Sofía López (Familiar)'],
       minuta: 'Pendiente de realización.',
       conformidad: 'Pendiente',
@@ -179,6 +181,7 @@
       modalidad: 'Presencial',
       lugar: 'Consultorio 2',
       proxima: true,
+      estado: 'pendiente',
       participantes: ['Laura M.', 'Dr. García', 'Martín Sánchez (Familiar)'],
       minuta: 'Pendiente de realización.',
       conformidad: 'Pendiente',
@@ -190,6 +193,7 @@
       modalidad: 'Virtual',
       link: 'https://meet.google.com/ros-jun-18',
       proxima: true,
+      estado: 'agendada',
       participantes: ['Dr. García', 'Lic. Fernández', 'Carlos Giménez (Familiar)'],
       minuta: 'Pendiente de realización.',
       conformidad: 'Pendiente',
@@ -201,6 +205,7 @@
       modalidad: 'Virtual',
       link: 'https://meet.google.com/may-jun-20',
       proxima: true,
+      estado: 'pendiente',
       participantes: ['Laura M. (Coordinación)', 'Dr. García', 'Sofía López (Familiar)'],
       minuta: 'Pendiente de realización.',
       conformidad: 'Pendiente',
@@ -212,6 +217,7 @@
       modalidad: 'Presencial',
       lugar: 'Salón Comedor Principal',
       proxima: true,
+      estado: 'agendada',
       participantes: ['Laura M.', 'Dr. García', 'Martín Sánchez (Familiar)'],
       minuta: 'Pendiente de realización.',
       conformidad: 'Pendiente',
@@ -223,6 +229,7 @@
       modalidad: 'Presencial',
       lugar: 'Sala de Reuniones 1er Piso',
       proxima: true,
+      estado: 'pendiente',
       participantes: ['Dr. García', 'Lic. Fernández', 'Carlos Giménez (Familiar)'],
       minuta: 'Pendiente de realización.',
       conformidad: 'Pendiente',
@@ -235,6 +242,7 @@
       modalidad: 'Presencial',
       lugar: 'Salón Comedor Principal',
       proxima: false,
+      estado: 'agendada',
       participantes: ['Laura M.', 'Dr. García', 'Sofía López (Familiar)'],
       minuta: 'Se compartió la evolución general de María con la familia. Se resolvieron dudas sobre rutinas de medicación y horarios de visita. Se acordó seguimiento mensual.',
       conformidad: 'Alta',
@@ -246,6 +254,7 @@
       modalidad: 'Virtual',
       link: 'https://meet.google.com/abc-defg-hij',
       proxima: false,
+      estado: 'agendada',
       participantes: ['Dr. García', 'Lic. Fernández', 'Carlos Giménez (Familiar)'],
       minuta: 'Evaluación mensual de Rosa. Se revisaron avances en estimulación cognitiva y se ajustó el plan de alimentación. La familia manifestó conformidad.',
       conformidad: 'Alta',
@@ -257,6 +266,7 @@
       modalidad: 'Presencial',
       lugar: 'Consultorio 1',
       proxima: false,
+      estado: 'agendada',
       participantes: ['Laura M.', 'Dr. García', 'Kinesióloga', 'Ana Pérez (Familiar)'],
       minuta: 'Revisión del plan de atención de Juan. Se evaluaron avances en fisioterapia y se ajustó plan nutricional para diabetes tipo 2.',
       conformidad: 'Alta',
@@ -268,6 +278,7 @@
       modalidad: 'Virtual',
       link: 'https://meet.google.com/mno-pqr-stu',
       proxima: false,
+      estado: 'agendada',
       participantes: ['Laura M.', 'Dr. García', 'Sofía López (Familiar)'],
       minuta: 'Revisión bimestral de María. Se compartieron avances en talleres de memoria y se reforzó el plan de medicación. La familia se mostró conforme.',
       conformidad: 'Alta',
@@ -279,6 +290,7 @@
       modalidad: 'Presencial',
       lugar: 'Sala de Reuniones 1er Piso',
       proxima: false,
+      estado: 'agendada',
       participantes: ['Laura M.', 'Dr. García', 'Enfermería', 'Martín Sánchez (Familiar)'],
       minuta: 'Primer seguimiento tras el ingreso de Carlos. Se presentó el plan de atención y se definieron objetivos a corto plazo. Familia conforme.',
       conformidad: 'Alta',
@@ -290,6 +302,7 @@
       modalidad: 'Presencial',
       lugar: 'Salón Comedor Principal',
       proxima: false,
+      estado: 'agendada',
       participantes: ['Dr. García', 'Lic. Fernández', 'Carlos Giménez (Familiar)'],
       minuta: 'Encuentro mensual con la familia Giménez. Se evaluó el estado general de Rosa, se planificaron actividades para el próximo mes. Se detectó leve deterioro en memoria a corto plazo.',
       conformidad: 'Media',
@@ -301,6 +314,7 @@
       modalidad: 'Virtual',
       link: 'https://meet.google.com/vwx-yza-bcd',
       proxima: false,
+      estado: 'agendada',
       participantes: ['Dr. García', 'Lic. Fernández', 'Ana Pérez (Familiar)'],
       minuta: 'Evaluación trimestral de Juan. Se revisaron resultados de kinesiología y se ajustaron tiempos de actividad física. La familia pidió mayor comunicación sobre incidentes.',
       conformidad: 'Media',
@@ -312,6 +326,7 @@
       modalidad: 'Presencial',
       lugar: 'Sala de Reuniones 1er Piso',
       proxima: false,
+      estado: 'agendada',
       participantes: ['Laura M.', 'Dr. García', 'Sofía López (Familiar)'],
       minuta: 'Seguimiento trimestral de María. Se evaluaron resultados de estimulación cognitiva y se confirmó estabilidad del tratamiento. Se acordó aumentar participación en talleres.',
       conformidad: 'Alta',
@@ -323,6 +338,7 @@
       modalidad: 'Virtual',
       link: 'https://meet.google.com/efg-hij-klm',
       proxima: false,
+      estado: 'agendada',
       participantes: ['Laura M.', 'Dr. García', 'Martín Sánchez (Familiar)'],
       minuta: 'Revisión del estado de Carlos tras un mes de ingreso. Se evaluó adaptación, participación en actividades y estado general. Se sugirió incrementar actividades recreativas.',
       conformidad: 'Baja',
@@ -404,15 +420,20 @@
   // ENVIRONMENT SWITCHER
   // ========================================================================
 
+  let currentEnv = 'familiar';
+
   const envBtns = $$('.env-btn');
   envBtns.forEach(btn => {
     btn.addEventListener('click', function () {
       envBtns.forEach(b => b.classList.remove('active'));
       this.classList.add('active');
       const env = this.dataset.env;
+      currentEnv = env;
       $id('env-interno').style.display = env === 'interno' ? 'flex' : 'none';
-      $id('env-familiar').style.display = env === 'familiar' ? 'flex' : 'none';
-      if (env === 'familiar') renderFamView(currentFamView);
+      $id('env-familiar').style.display = (env === 'familiar' || env === 'comunicacion') ? 'flex' : 'none';
+      $$('.show-com').forEach(el => el.style.display = env === 'comunicacion' ? '' : 'none');
+      $$('.show-fam').forEach(el => el.style.display = env === 'familiar' ? '' : 'none');
+      if (env === 'familiar' || env === 'comunicacion') renderFamView(currentFamView);
       else renderInternalView(currentView);
     });
   });
@@ -429,8 +450,7 @@
     currentView = view;
     pageTitle.textContent = {
       panel: 'Panel General', calendario: 'Calendario de Actividades',
-      asistencia: 'Asistencia y Coordinación', reportes: 'Reportes de Salud',
-      reuniones: 'Gestión de Reuniones',
+      asistencia: 'Asistencia y Coordinación',
       evaluaciones: 'Evaluaciones Post-Actividad',
     }[view] || 'Panel General';
 
@@ -442,10 +462,8 @@
     const actions = $id('topbar-actions');
     if (view === 'panel') {
       actions.innerHTML = '<button class="btn btn-primary" id="btn-nueva-actividad">+ Nueva Actividad</button>';
-    } else if (view === 'reuniones') {
-      actions.innerHTML = '<button class="btn btn-primary" id="btn-nueva-reunion">+ Programar Reunión</button>';
-    } else if (view === 'reportes') {
-      actions.innerHTML = '<button class="btn btn-primary" id="btn-nuevo-reporte">+ Nuevo Reporte</button>';
+    } else if (view === 'calendario') {
+      actions.innerHTML = '';
     } else {
       actions.innerHTML = '';
     }
@@ -500,10 +518,6 @@
     const proximas = ACTIVIDADES.filter(a => a.fecha >= NOW).sort((a, b) => a.fecha - b.fecha).slice(0, 8);
 
     let html = `
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-        <div></div>
-        <button class="btn btn-primary" id="btn-crear-actividad">+ Crear Actividad</button>
-      </div>
       <div class="cal-layout">
         <div id="cal-grid-container"></div>
         <div>
@@ -539,9 +553,26 @@
       </div>
     `;
     content.innerHTML = html;
-    renderCalendar($id('cal-grid-container'), ACTIVIDADES, 'actividades');
+    const calContainer = $id('cal-grid-container');
+    if (calContainer) {
+      renderCalendar(calContainer, ACTIVIDADES, 'actividades');
+      const calCard = calContainer.querySelector('.card');
+      if (calCard) {
+        const h3 = calCard.querySelector('h3');
+        if (h3) {
+          const rightSide = h3.parentElement.querySelector(':scope > div:last-child');
+          if (rightSide) {
+            const btn = document.createElement('button');
+            btn.className = 'btn btn-primary btn-sm';
+            btn.id = 'btn-crear-actividad';
+            btn.style.marginRight = '8px';
+            btn.textContent = '+ Crear Actividad';
+            rightSide.prepend(btn);
+          }
+        }
+      }
+    }
 
-    // Wire crear actividad button
     const btnCrear = $id('btn-crear-actividad');
     if (btnCrear) {
       btnCrear.addEventListener('click', function () {
@@ -580,10 +611,34 @@
                   <option>Laura Mendoza</option><option>Dr. García</option><option>Lic. Fernández</option><option>Prof. Ruiz</option>
                 </select>
               </div>
+              <div>
+                <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:6px">Residentes participantes</label>
+                <div style="border:1px solid var(--border-color);border-radius:8px;padding:8px;background:var(--bg-body)">
+                  <label style="display:flex;align-items:center;gap:8px;padding:4px 6px;cursor:pointer;border-bottom:1px solid var(--border-light);margin-bottom:4px;font-size:0.85rem;font-weight:600">
+                    <input type="checkbox" id="select-all-residentes" checked> Seleccionar todos
+                  </label>
+                  ${RESIDENTES.map(r => `
+                    <label style="display:flex;align-items:center;gap:8px;padding:5px 6px;cursor:pointer;border-radius:6px;transition:var(--tr)" onmouseover="this.style.background='var(--border-light)'" onmouseout="this.style.background='transparent'">
+                      <input type="checkbox" class="residente-check" data-id="${r.id}" checked>
+                      <span style="width:8px;height:8px;border-radius:50%;background:${r.color};display:inline-block"></span>
+                      <strong style="font-size:0.85rem">${r.nombre}</strong>
+                      <span style="font-size:0.72rem;color:var(--text-muted)">Hab. ${r.hab}</span>
+                    </label>
+                  `).join('')}
+                </div>
+              </div>
             </div>
           </div>
         `, `<button class="btn btn-secondary" onclick="document.getElementById('modal-overlay').style.display='none'">Cancelar</button>
             <button class="btn btn-primary" id="btn-guardar-actividad">Guardar Actividad</button>`);
+
+        const selectAllCb = $id('select-all-residentes');
+        if (selectAllCb) {
+          selectAllCb.addEventListener('change', function () {
+            document.querySelectorAll('.residente-check').forEach(cb => cb.checked = this.checked);
+          });
+        }
+
         const btnSave = $id('btn-guardar-actividad');
         if (btnSave) {
           btnSave.addEventListener('click', function () {
@@ -597,7 +652,12 @@
             const [h, m] = (hora || '10:00').split(':').map(Number);
             const fecha = new Date(fechaVal + 'T12:00:00');
             fecha.setHours(h, m);
-            const catClass = CAT_CLASSES[cat] || 'evento';
+            const selectedCheckboxes = document.querySelectorAll('.residente-check:checked');
+            const selectedIds = Array.from(selectedCheckboxes).map(cb => parseInt(cb.dataset.id));
+            const invitaciones = selectedIds.map(id => {
+              const res = residentePorId(id);
+              return { residenteId: id, familiar: res.familiar, estado: 'pendiente', cantidad: 1 };
+            });
             ACTIVIDADES.push({
               id: 'act-new-' + Date.now(),
               titulo: nombre,
@@ -605,8 +665,8 @@
               fecha: fecha,
               lugar: lugar,
               tallerista: tallerista,
-              residentesIds: [1, 2, 3],
-              invitaciones: [],
+              residentesIds: selectedIds,
+              invitaciones: invitaciones,
             });
             ACTIVIDADES.sort((a, b) => a.fecha - b.fecha);
             closeModal();
@@ -641,14 +701,20 @@
     for (let d = 1; d <= daysInMonth; d++) {
       const date = new Date(YEAR, MONTH, d);
       const today = date.toDateString() === NOW.toDateString();
+      const past = date < NOW && !today;
       const dayItems = items.filter(it => it.fecha && it.fecha.toDateString() === date.toDateString());
       const ds = date.toISOString().slice(0, 10);
-      grid += `<div class="cal-day ${today ? 'today' : ''}" data-date="${ds}">
+      grid += `<div class="cal-day ${today ? 'today' : ''} ${past ? 'past' : ''}" data-date="${ds}">
         <span class="cal-day-num">${d}</span>
         ${dayItems.map(it => {
-          const cat = it.categoria || (type === 'reuniones' ? 'reunion' : '');
-          const cls = type === 'reuniones' ? 'evento' : (CAT_CLASSES[cat] || 'evento');
-          return `<span class="cal-day-event ${cls}">${it.titulo || it.titulo}</span>`;
+          if (type === 'reuniones') {
+            const est = it.estado || 'pendiente';
+            const estadoCls = 'reunion-' + est;
+            const tip = est === 'pendiente' ? '⏳ Pendiente de confirmación' : est === 'agendada' ? '✅ Confirmada' : '❌ Cancelada';
+            return `<span class="cal-day-event ${estadoCls}" title="${tip}">${it.titulo}</span>`;
+          }
+          const cls = CAT_CLASSES[it.categoria] || 'evento';
+          return `<span class="cal-day-event ${cls}">${it.titulo}</span>`;
         }).join('')}
       </div>`;
     }
@@ -665,7 +731,9 @@
       </div>`;
     } else if (type === 'reuniones') {
       grid += `<div class="cal-legend">
-        <span class="cal-legend-item"><span class="cal-legend-dot" style="background:var(--primary)"></span>Reuniones</span>
+        <span class="cal-legend-item"><span class="cal-legend-dot" style="background:var(--warning)"></span>⏳ Pendiente</span>
+        <span class="cal-legend-item"><span class="cal-legend-dot" style="background:var(--success)"></span>✅ Agendada</span>
+        <span class="cal-legend-item"><span class="cal-legend-dot" style="background:var(--danger)"></span>❌ Cancelada</span>
       </div>`;
     }
     grid += `</div>`;
@@ -694,15 +762,22 @@
               <div class="card-body">
                 <p style="font-size:0.85rem">🕐 ${fmtTime(it.fecha)} · 📍 ${it.lugar}</p>
                 <p style="font-size:0.82rem;color:var(--text-secondary)"><strong>Tallerista:</strong> ${it.tallerista}</p>
-                <div style="margin-top:8px">
-                  <strong style="font-size:0.82rem">Participantes (${participantes.length}):</strong>
-                  <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
-                    ${participantes.map(p => `<span class="badge" style="background:${p.color};color:#fff">${p.nombre}</span>`).join('')}
+                  <div style="margin-top:8px">
+                    <strong style="font-size:0.82rem">Participantes (${participantes.length}):</strong>
+                    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
+                      ${participantes.map(p => {
+                        const inv = (it.invitaciones || []).find(i => i.residenteId === p.id);
+                        const famText = inv && inv.estado === 'confirmado' ? ` 👨‍👩‍👧${inv.cantidad}` : '';
+                        return `<span class="badge" style="background:${p.color};color:#fff">${p.nombre}${famText}</span>`;
+                      }).join('')}
+                    </div>
+                    ${it.residentesIds && it.residentesIds.length > 0 ? `
+                      <p style="margin-top:6px;font-size:0.8rem;color:var(--text-muted)">
+                        🏥 Total: ${it.residentesIds.length} residentes
+                        ${(() => { const tf = (it.invitaciones || []).filter(i => i.estado === 'confirmado').reduce((s, i) => s + i.cantidad, 0); return tf > 0 ? `· 👨‍👩‍👧 ${tf} familiares confirmados` : ''; })()}
+                      </p>
+                    ` : ''}
                   </div>
-                  ${it.residentesIds && it.residentesIds.length > 0 ? `
-                    <p style="margin-top:6px;font-size:0.8rem;color:var(--text-muted)">🏥 Total: ${it.residentesIds.length} residentes</p>
-                  ` : ''}
-                </div>
               </div>
             </div>`;
           } else {
@@ -725,22 +800,58 @@
 
   // --- Asistencia ---
   RENDERS.asistencia = function () {
+    const monthActs = ACTIVIDADES.filter(a => a.fecha.getMonth() === MONTH);
+    const weekActs = monthActs.filter(a => a.fecha > new Date(YEAR, MONTH, NOW.getDate() - 7));
+    const totalRes = RESIDENTES.length;
+
+    const famData = {
+      1: { nombre: 'Sofía López', freq: 'Frecuente' },
+      2: { nombre: 'Ana Pérez', freq: 'Ocasional' },
+      3: { nombre: 'Carlos Giménez', freq: 'Frecuente' },
+      4: { nombre: 'Lucía Sánchez', freq: 'Poco frecuente' },
+      5: { nombre: 'Martín Martínez', freq: 'Frecuente' },
+      6: { nombre: 'Sofía López', freq: 'Ocasional' },
+    };
+    const famCount = new Set(Object.values(famData).map(f => f.nombre)).size;
+    const famFreqColor = { 'Frecuente': 'var(--emerald-500)', 'Ocasional': 'var(--peach)', 'Poco frecuente': 'var(--text-muted)' };
+
+    let totalPct = 0;
+
     let html = `
+      <div class="stats-grid" style="margin-bottom:20px">
+        <div class="stat-card"><div class="stat-num">${totalRes}</div><div class="stat-label">Residentes</div></div>
+        <div class="stat-card"><div class="stat-num">${weekActs.length}</div><div class="stat-label">Actividades esta semana</div></div>
+        <div class="stat-card"><div class="stat-num">${monthActs.length}</div><div class="stat-label">Actividades del mes</div></div>
+        <div class="stat-card"><div class="stat-num">${famCount}</div><div class="stat-label">Familiares participantes</div></div>
+      </div>
+
       <div class="section-block">
         <div class="section-title"><span class="ico">✅</span> Control de Asistencia · ${capitalize(new Date(YEAR, MONTH).toLocaleDateString('es-AR',{month:'long',year:'numeric'}))}</div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Residente</th><th>Hab.</th><th>Estado hoy</th><th>Asistencia semanal</th><th>Próxima actividad</th></tr></thead>
+            <thead><tr><th>Residente</th><th>Hab.</th><th>Participación</th><th>Asistencia semanal</th><th>Familiar</th><th>Próxima actividad</th></tr></thead>
             <tbody>
               ${RESIDENTES.map(r => {
-                const act = ACTIVIDADES.filter(a => a.residentesIds.includes(r.id));
-                const semAct = act.filter(a => a.fecha > new Date(YEAR, MONTH, NOW.getDate() - 7));
-                const next = act.find(a => a.fecha >= NOW);
+                const acts = monthActs.filter(a => a.residentesIds.includes(r.id));
+                const total = monthActs.length || 1;
+                const pct = Math.round((acts.length / total) * 100);
+                totalPct += pct;
+                const semActs = weekActs.filter(a => a.residentesIds.includes(r.id));
+                const next = monthActs.find(a => a.residentesIds.includes(r.id) && a.fecha >= NOW);
+                const fam = famData[r.id];
                 return `<tr>
                   <td><strong>${r.nombre}</strong></td>
                   <td>${r.hab}</td>
-                  <td><span class="badge badge-success">Presente</span></td>
-                  <td>${semAct.length}/${ACTIVIDADES.filter(a => a.fecha > new Date(YEAR, MONTH, NOW.getDate() - 7)).length} actividades</td>
+                  <td>
+                    <div style="display:flex;align-items:center;gap:6px">
+                      <div style="flex:1;height:6px;background:var(--bg-body);border-radius:3px;overflow:hidden;min-width:60px">
+                        <div style="height:100%;width:${pct}%;background:${pct >= 70 ? 'var(--emerald-500)' : pct >= 40 ? 'var(--peach)' : 'var(--danger)'};border-radius:3px"></div>
+                      </div>
+                      <span style="font-size:0.75rem;font-weight:600;min-width:32px">${pct}%</span>
+                    </div>
+                  </td>
+                  <td>${semActs.length}/${weekActs.length} actividades</td>
+                  <td>${fam ? `<span style="font-size:0.82rem">${fam.nombre}</span><br><small style="color:${famFreqColor[fam.freq]}">${fam.freq}</small>` : '<small>—</small>'}</td>
                   <td>${next ? fmtShort(next.fecha) + ' · ' + next.titulo : '—'}</td>
                 </tr>`;
               }).join('')}
@@ -748,39 +859,23 @@
           </table>
         </div>
       </div>
-    `;
-    content.innerHTML = html;
-  };
 
-  // --- Reportes de Salud ---
-  RENDERS.reportes = function () {
-    let html = `
-      <div class="info-banner">🔒 Información confidencial y trazable. Solo accesible para personal autorizado. Fuente: Historial clínico Nexup.</div>
       <div class="section-block">
-        <div class="section-title"><span class="ico">📋</span> Reportes Clínicos</div>
-        <div class="timeline">
-          ${REPORTES.slice(0, 10).map(r => {
-            const estClass = { 'Estable': 'badge-success', 'En observación': 'badge-warning', 'Mejorando': 'badge-info' }[r.estadoGeneral] || 'badge-neutral';
+        <div class="section-title"><span class="ico">📋</span> Últimas Actividades</div>
+        <div class="card" style="padding:8px 16px">
+          ${monthActs.sort((a, b) => b.fecha - a.fecha).slice(0, 4).map(a => {
+            const participantes = (a.residentesIds || []).map(id => RESIDENTES.find(r => r.id === id)).filter(Boolean);
             return `
-              <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="card card-accent-${r.estadoGeneral === 'Estable' ? 'g' : r.estadoGeneral === 'En observación' ? 'w' : 'p'}">
-                  <div class="card-header">
-                    <div><strong>${r.residente}</strong> · <span class="badge ${estClass}">${r.estadoGeneral}</span></div>
-                    <small>${fmtDate(r.fecha)} · ${r.periodo}</small>
-                  </div>
-                  <div class="card-body">
-                    <p>${r.evolucion}</p>
-                    <div class="vitals-grid">
-                      <div class="vital-item"><div class="vital-label">Presión</div><div class="vital-value">${r.signos.presion}</div></div>
-                      <div class="vital-item"><div class="vital-label">FC</div><div class="vital-value">${r.signos.fc}</div></div>
-                      <div class="vital-item"><div class="vital-label">Temperatura</div><div class="vital-value">${r.signos.temp}</div></div>
-                      <div class="vital-item"><div class="vital-label">SatO₂</div><div class="vital-value">${r.signos.sat}</div></div>
-                    </div>
-                  </div>
-                  <div class="card-foot" style="display:flex;justify-content:flex-end;gap:8px">
-                    <button class="btn btn-sm btn-outline report-chat-btn" data-rep-id="${r.id}" style="position:relative">💬 Chat<span style="position:absolute;top:-6px;right:-6px;background:var(--danger);color:#fff;font-size:0.6rem;font-weight:700;min-width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;padding:0 3px">1</span></button>
-                    <button class="btn btn-sm btn-outline ver-reporte-btn" data-rep-id="${r.id}">📄 Ver informe completo</button>
+              <div style="display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border-light)">
+                <div style="min-width:44px;text-align:center;background:${CAT_COLORS[a.categoria] || 'var(--primary)'};color:#fff;border-radius:8px;padding:4px 8px;line-height:1.2">
+                  <div style="font-size:0.6rem;text-transform:uppercase;font-weight:600">${a.fecha.toLocaleDateString('es-AR',{month:'short'})}</div>
+                  <div style="font-size:1rem;font-weight:700">${a.fecha.getDate()}</div>
+                </div>
+                <div style="flex:1;min-width:0">
+                  <div style="font-size:0.85rem;font-weight:600">${a.titulo}</div>
+                  <div style="font-size:0.75rem;color:var(--text-muted)">🕐 ${fmtTime(a.fecha)} · 📍 ${a.lugar}</div>
+                  <div style="display:flex;gap:4px;margin-top:4px;flex-wrap:wrap">
+                    ${participantes.map(p => `<span class="badge" style="background:${p.color};color:#fff;font-size:0.65rem">${p.nombre.split(' ')[0]}</span>`).join('')}
                   </div>
                 </div>
               </div>
@@ -790,119 +885,186 @@
       </div>
     `;
     content.innerHTML = html;
-    // Wire up "Ver informe completo" buttons
-    content.querySelectorAll('.ver-reporte-btn').forEach(btn => {
-      btn.addEventListener('click', function () {
-        const rid = this.dataset.repId;
-        const r = REPORTES.find(x => x.id === rid);
-        if (!r) return;
+  };
+
+  // --- Reportes de Salud ---
+  RENDERS.reportes = function () {
+    const allWeekly = REPORTES.filter(r => r.periodo === 'Semanal').slice(0, 6);
+    const allMonthly = REPORTES.filter(r => r.periodo === 'Mensual').slice(0, 6);
+
+    function renderReportesGrid(period) {
+      const data = period === 'semanal' ? allWeekly : allMonthly;
+      const cls = period === 'semanal' ? 'semanal' : 'mensual';
+      const grid = document.getElementById('reportes-grid');
+      if (!grid) return;
+
+      grid.innerHTML = data.map(r => {
         const estClass = { 'Estable': 'badge-success', 'En observación': 'badge-warning', 'Mejorando': 'badge-info' }[r.estadoGeneral] || 'badge-neutral';
-        openModal('Informe completo — ' + r.residente, `
-          <div style="min-width:360px">
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
-              <span class="badge ${estClass}" style="font-size:0.85rem;padding:4px 14px">${r.estadoGeneral}</span>
-              <small>${fmtDate(r.fecha)} · ${r.periodo}</small>
+        return `
+          <div class="reporte-card ${cls}">
+            <div class="card-header">
+              <strong>${r.residente}</strong> · <span class="badge ${estClass}">${r.estadoGeneral}</span>
             </div>
-            <div class="info-banner">🔒 Información confidencial. Fuente: Historial clínico Nexup.</div>
-            <div style="margin:14px 0">
-              <h4>Evolución</h4>
+            <div class="card-body">
               <p>${r.evolucion}</p>
-            </div>
-            <div style="margin:14px 0">
-              <h4>Signos Vitales</h4>
               <div class="vitals-grid">
-                <div class="vital-item"><div class="vital-label">Presión Arterial</div><div class="vital-value">${r.signos.presion}</div></div>
-                <div class="vital-item"><div class="vital-label">Frecuencia Cardíaca</div><div class="vital-value">${r.signos.fc}</div></div>
+                <div class="vital-item"><div class="vital-label">Presión</div><div class="vital-value">${r.signos.presion}</div></div>
+                <div class="vital-item"><div class="vital-label">FC</div><div class="vital-value">${r.signos.fc}</div></div>
                 <div class="vital-item"><div class="vital-label">Temperatura</div><div class="vital-value">${r.signos.temp}</div></div>
-                <div class="vital-item"><div class="vital-label">Saturación O₂</div><div class="vital-value">${r.signos.sat}</div></div>
+                <div class="vital-item"><div class="vital-label">SatO₂</div><div class="vital-value">${r.signos.sat}</div></div>
               </div>
             </div>
-            <div style="margin:14px 0;font-size:0.85rem">
-              <p><strong>Residente:</strong> ${r.residente}</p>
-              <p><strong>Fecha del reporte:</strong> ${fmtDate(r.fecha)}</p>
-              <p><strong>Período:</strong> ${r.periodo}</p>
-              <p><strong>ID del reporte:</strong> ${r.id}</p>
-            </div>
-          </div>
-        `, '<button class="btn btn-secondary" onclick="document.getElementById(\'modal-overlay\').style.display=\'none\'">Cerrar</button>');
-      });
-    });
-    // Wire up "Chat" buttons
-    content.querySelectorAll('.report-chat-btn').forEach(btn => {
-      btn.addEventListener('click', function () {
-        const rid = this.dataset.repId;
-        const r = REPORTES.find(x => x.id === rid);
-        const chat = REPORT_CHATS[rid];
-        if (!r || !chat) return;
-        const chatHtml = `
-          <div style="display:flex;flex-direction:column;height:420px;min-width:360px">
-            <div style="display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--border-color);margin-bottom:12px">
-              <div class="chat-list-avatar" style="background:#7C3AED;width:36px;height:36px;font-size:0.7rem">SL</div>
-              <div>
-                <div style="font-weight:600;font-size:0.9rem">Sofía López</div>
-                <div style="font-size:0.75rem;color:var(--emerald-500)">● En línea</div>
+            <div class="card-foot">
+              <div style="display:flex;justify-content:space-between;align-items:center;width:100%">
+                <span class="badge badge-${period === 'semanal' ? 'info' : 'lavanda'}">${r.periodo}</span>
+                <small>${fmtDate(r.fecha)}</small>
               </div>
-              <span class="badge badge-info" style="margin-left:auto">${r.residente}</span>
-            </div>
-            <div id="report-chat-msgs" style="flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:4px 0">
-              ${chat.messages.map(m => `
-                <div class="msg-bubble ${m.side}" style="max-width:75%;align-self:${m.side === 'sent' ? 'flex-end' : 'flex-start'}">
-                  <strong style="font-size:0.78rem">${m.from}</strong><br>
-                  ${m.text}
-                  <span class="msg-time">${fmtTime(m.time)} · ${m.side === 'sent' ? 'Visto' : 'Recibido'}</span>
-                </div>
-              `).join('')}
-            </div>
-            <div style="display:flex;gap:8px;padding-top:12px;border-top:1px solid var(--border-color);margin-top:8px">
-              <input type="text" class="form-control" id="report-chat-input" placeholder="Escribí un mensaje..." style="flex:1" />
-              <button class="btn btn-primary btn-sm" id="report-chat-send" data-rep-id="${rid}">Enviar</button>
+              <div style="display:flex;gap:6px;margin-top:8px">
+                <button class="btn btn-xs btn-outline ver-reporte-btn" data-rep-id="${r.id}">📄 Ver informe completo</button>
+                <button class="btn btn-xs btn-secondary report-chat-btn" data-rep-id="${r.id}" style="position:relative">💬 Chat <span class="chat-notif-badge">1</span></button>
+              </div>
             </div>
           </div>
         `;
-        openModal('Chat — Reporte de ' + r.residente, chatHtml,
-          '<button class="btn btn-secondary" onclick="document.getElementById(\'modal-overlay\').style.display=\'none\'">Cerrar</button>');
-        const msgsEl = document.getElementById('report-chat-msgs');
-        if (msgsEl) msgsEl.scrollTop = msgsEl.scrollHeight;
-        const sendBtn = document.getElementById('report-chat-send');
-        const inputEl = document.getElementById('report-chat-input');
-        if (sendBtn && inputEl) {
-          sendBtn.addEventListener('click', function () {
-            const txt = inputEl.value.trim();
-            if (!txt) return;
-            const bubble = document.createElement('div');
-            bubble.className = 'msg-bubble sent';
-            bubble.style.maxWidth = '75%';
-            bubble.style.alignSelf = 'flex-end';
-            bubble.innerHTML = '<strong style="font-size:0.78rem">Laura Mendoza</strong><br>' + txt + '<span class="msg-time">' + fmtTime(new Date()) + ' · Visto</span>';
-            msgsEl.appendChild(bubble);
-            msgsEl.scrollTop = msgsEl.scrollHeight;
-            inputEl.value = '';
-            setTimeout(() => {
-              const reply = document.createElement('div');
-              reply.className = 'msg-bubble sent';
-              reply.style.maxWidth = '75%';
-              reply.style.alignSelf = 'flex-end';
-              reply.innerHTML = '<strong style="font-size:0.78rem">Laura Mendoza</strong><br>Recibimos tu mensaje, te responderemos a la brevedad.<span class="msg-time">' + fmtTime(new Date()) + ' · Enviado</span>';
-              msgsEl.appendChild(reply);
-              msgsEl.scrollTop = msgsEl.scrollHeight;
-            }, 1200);
-          });
-          inputEl.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter') sendBtn.click();
-          });
-        }
+      }).join('');
+
+      // Wire "Ver informe completo"
+      grid.querySelectorAll('.ver-reporte-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+          const rid = this.dataset.repId;
+          const r = REPORTES.find(x => x.id === rid);
+          if (!r) return;
+          const estClass = { 'Estable': 'badge-success', 'En observación': 'badge-warning', 'Mejorando': 'badge-info' }[r.estadoGeneral] || 'badge-neutral';
+          openModal('Informe completo — ' + r.residente, `
+            <div style="min-width:360px">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+                <span class="badge ${estClass}" style="font-size:0.85rem;padding:4px 14px">${r.estadoGeneral}</span>
+                <small>${fmtDate(r.fecha)} · ${r.periodo}</small>
+              </div>
+              <div class="info-banner">🔒 Información confidencial. Fuente: Historial clínico Nexup.</div>
+              <div style="margin:14px 0">
+                <h4>Evolución</h4>
+                <p>${r.evolucion}</p>
+              </div>
+              <div style="margin:14px 0">
+                <h4>Signos Vitales</h4>
+                <div class="vitals-grid">
+                  <div class="vital-item"><div class="vital-label">Presión Arterial</div><div class="vital-value">${r.signos.presion}</div></div>
+                  <div class="vital-item"><div class="vital-label">Frecuencia Cardíaca</div><div class="vital-value">${r.signos.fc}</div></div>
+                  <div class="vital-item"><div class="vital-label">Temperatura</div><div class="vital-value">${r.signos.temp}</div></div>
+                  <div class="vital-item"><div class="vital-label">Saturación O₂</div><div class="vital-value">${r.signos.sat}</div></div>
+                </div>
+              </div>
+              <div style="margin:14px 0;font-size:0.85rem">
+                <p><strong>Residente:</strong> ${r.residente}</p>
+                <p><strong>Fecha del reporte:</strong> ${fmtDate(r.fecha)}</p>
+                <p><strong>Período:</strong> ${r.periodo}</p>
+                <p><strong>ID del reporte:</strong> ${r.id}</p>
+              </div>
+            </div>
+          `, '<button class="btn btn-secondary" onclick="document.getElementById(\'modal-overlay\').style.display=\'none\'">Cerrar</button>');
+        });
+      });
+
+      // Wire "Chat"
+      grid.querySelectorAll('.report-chat-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+          const rid = this.dataset.repId;
+          const r = REPORTES.find(x => x.id === rid);
+          const chat = REPORT_CHATS[rid];
+          if (!r || !chat) return;
+          const chatHtml = `
+            <div style="display:flex;flex-direction:column;height:420px;min-width:360px">
+              <div style="display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--border-color);margin-bottom:12px">
+                <div class="chat-list-avatar" style="background:#7C3AED;width:36px;height:36px;font-size:0.7rem">SL</div>
+                <div>
+                  <div style="font-weight:600;font-size:0.9rem">Sofía López</div>
+                  <div style="font-size:0.75rem;color:var(--emerald-500)">● En línea</div>
+                </div>
+                <span class="badge badge-info" style="margin-left:auto">${r.residente}</span>
+              </div>
+              <div id="report-chat-msgs" style="flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:4px 0">
+                ${chat.messages.map(m => `
+                  <div class="msg-bubble ${m.side}" style="max-width:75%;align-self:${m.side === 'sent' ? 'flex-end' : 'flex-start'}">
+                    <strong style="font-size:0.78rem">${m.from}</strong><br>
+                    ${m.text}
+                    <span class="msg-time">${fmtTime(m.time)} · ${m.side === 'sent' ? 'Visto' : 'Recibido'}</span>
+                  </div>
+                `).join('')}
+              </div>
+              <div style="display:flex;gap:8px;padding-top:12px;border-top:1px solid var(--border-color)">
+                <input type="text" class="form-control" id="report-chat-input" placeholder="Escribí tu respuesta..." />
+                <button class="btn btn-primary btn-sm" id="report-chat-send">Enviar</button>
+              </div>
+            </div>
+          `;
+          openModal('💬 Consulta por Reporte — ' + r.residente, chatHtml, '<button class="btn btn-secondary" onclick="document.getElementById(\'modal-overlay\').style.display=\'none\'">Cerrar</button>');
+          setTimeout(() => {
+            const sendBtn = document.getElementById('report-chat-send');
+            const input = document.getElementById('report-chat-input');
+            const msgs = document.getElementById('report-chat-msgs');
+            if (!sendBtn || !input || !msgs) return;
+            const doSend = () => {
+              const txt = input.value.trim();
+              if (!txt) return;
+              const bubble = document.createElement('div');
+              bubble.className = 'msg-bubble sent';
+              bubble.style.maxWidth = '75%';
+              bubble.style.alignSelf = 'flex-end';
+              bubble.innerHTML = '<strong style="font-size:0.78rem">Laura Mendoza</strong><br>' + txt.replace(/</g,'&lt;') + '<span class="msg-time">' + fmtTime(new Date()) + ' · Enviado</span>';
+              msgs.appendChild(bubble);
+              msgs.scrollTop = msgs.scrollHeight;
+              input.value = '';
+              setTimeout(() => {
+                const res = document.createElement('div');
+                res.className = 'msg-bubble received';
+                res.style.maxWidth = '75%';
+                res.style.alignSelf = 'flex-start';
+                const respuestas = ['Gracias por tu mensaje. Lo estamos revisando.', 'Recibido. Te confirmamos cualquier novedad.', 'Entendido. Quedamos atentos a tu consulta.'];
+                res.innerHTML = '<strong style="font-size:0.78rem">Sofía López</strong><br>' + respuestas[Math.floor(Math.random() * respuestas.length)] + '<span class="msg-time">' + fmtTime(new Date()) + ' · Leído</span>';
+                msgs.appendChild(res);
+                msgs.scrollTop = msgs.scrollHeight;
+              }, 1200);
+            };
+            sendBtn.addEventListener('click', doSend);
+            input.addEventListener('keydown', function (e) { if (e.key === 'Enter') doSend(); });
+          }, 100);
+        });
+      });
+    }
+
+    let html = `
+      <div class="info-banner">🔒 Información confidencial y trazable. Solo accesible para personal autorizado. Fuente: Historial clínico Nexup.</div>
+      <div class="section-block">
+        <div style="display:flex;gap:8px;margin-bottom:16px">
+          <button class="report-tab active" data-period="semanal">📅 Semanales</button>
+          <button class="report-tab" data-period="mensual">📆 Mensuales</button>
+        </div>
+        <div id="reportes-grid" class="grid-reportes"></div>
+      </div>
+    `;
+    content.innerHTML = html;
+
+    renderReportesGrid('semanal');
+
+    content.querySelectorAll('.report-tab').forEach(tab => {
+      tab.addEventListener('click', function () {
+        content.querySelectorAll('.report-tab').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+        renderReportesGrid(this.dataset.period);
       });
     });
   };
 
   // --- Reuniones (INTERNO) — now with private calendar ---
   RENDERS.reuniones = function () {
-    const prox = REUNIONES.find(r => r.proxima);
+    const prox = REUNIONES.find(r => r.proxima && r.estado !== 'cancelada');
     const todas = REUNIONES.length;
     const presenciales = REUNIONES.filter(r => r.modalidad === 'Presencial').length;
     const virtuales = REUNIONES.filter(r => r.modalidad === 'Virtual').length;
     const conformidadAlta = REUNIONES.filter(r => r.conformidad === 'Alta').length;
-    const próxCount = REUNIONES.filter(r => r.proxima).length;
+    const evaluadas = REUNIONES.filter(r => r.conformidad !== 'Pendiente').length;
+    const próxCount = REUNIONES.filter(r => r.proxima && r.estado !== 'cancelada').length;
 
     let html = `
       <div class="cols-2" style="gap:20px">
@@ -973,11 +1135,11 @@
             <h4 style="font-size:0.9rem;margin-bottom:8px;font-family:var(--font-body)">✅ Conformidad</h4>
             <div style="display:flex;align-items:center;gap:10px">
               <div style="flex:1;height:8px;background:var(--bg-body);border-radius:4px;overflow:hidden">
-                <div style="height:100%;width:${(conformidadAlta / todas * 100).toFixed(0)}%;background:var(--emerald-500);border-radius:4px"></div>
+                <div style="height:100%;width:${evaluadas ? (conformidadAlta / evaluadas * 100).toFixed(0) : 0}%;background:var(--emerald-500);border-radius:4px"></div>
               </div>
-              <span style="font-size:0.82rem;font-weight:600;color:var(--emerald-500)">${(conformidadAlta / todas * 100).toFixed(0)}%</span>
+              <span style="font-size:0.82rem;font-weight:600;color:var(--emerald-500)">${evaluadas ? (conformidadAlta / evaluadas * 100).toFixed(0) : 0}%</span>
             </div>
-            <p style="font-size:0.75rem;color:var(--text-muted);margin-top:4px">${conformidadAlta} de ${todas} reuniones con conformidad alta</p>
+            <p style="font-size:0.75rem;color:var(--text-muted);margin-top:4px">${conformidadAlta} de ${evaluadas} reuniones evaluadas con conformidad alta</p>
           </div>
         </div>
       </div>
@@ -985,7 +1147,7 @@
       <div class="section-block" style="margin-top:20px;">
         <div class="section-title"><span class="ico">📜</span> Historial de Minutas</div>
         <div class="card">
-          ${REUNIONES.map(r => `
+          ${REUNIONES.filter(r => new Date(r.fecha) < NOW).map(r => `
             <div class="minuta-item" onclick="this.classList.toggle('expanded')">
               <div class="minuta-summary">
                 <div>
@@ -993,7 +1155,6 @@
                   <span style="font-size:0.75rem;color:var(--text-muted);display:block">${fmtDate(r.fecha)} · ${r.modalidad} ${r.lugar ? '· ' + r.lugar : ''}</span>
                 </div>
                 <div style="display:flex;align-items:center;gap:8px">
-                  ${r.proxima ? '<span style="font-size:0.7rem;color:var(--info)">Pendiente</span>' : `<span style="font-size:0.7rem;color:var(--muted)">${r.conformidad}</span>`}
                   <span class="btn btn-xs btn-outline" style="font-size:0.7rem;padding:2px 8px;cursor:pointer">Ver detalles</span>
                   <span style="font-size:0.7rem;color:var(--text-muted)">▼</span>
                 </div>
@@ -1003,7 +1164,7 @@
                 <p>${r.minuta}</p>
                 <div style="margin-top:8px;font-size:0.82rem">
                   <strong>Participantes:</strong> ${r.participantes.join(', ')}<br>
-                  ${r.proxima ? '' : `<strong>Conformidad:</strong> ${r.conformidad}`}
+                  <strong>Conformidad:</strong> ${r.conformidad}
                 </div>
                 <button class="btn btn-sm btn-secondary" style="margin-top:8px">📄 Descargar minuta</button>
               </div>
@@ -1107,6 +1268,7 @@
               lugar: lugar,
               link: link,
               proxima: true,
+              estado: 'pendiente',
               participantes: participantes,
               minuta: 'Reunión programada. La minuta será completada tras la reunión.',
               conformidad: 'Pendiente',
@@ -1144,7 +1306,6 @@
 
     let html = `
       <div class="section-block">
-        <div class="section-title"><span class="ico">📝</span> Evaluaciones Post-Actividad</div>
         <div class="table-wrap">
           <table>
             <thead><tr><th>Actividad</th><th>Fecha</th><th>Participación</th><th>Evaluación</th><th>Acción</th></tr></thead>
@@ -1263,6 +1424,7 @@
       calendario: 'Calendario de Actividades',
       invitaciones: 'Invitaciones',
       reuniones: 'Reuniones y Seguimiento',
+      'reuniones-staff': 'Gestión de Reuniones',
     };
     famPageTitle.textContent = titles[view] || 'Inicio';
 
@@ -1352,6 +1514,154 @@
 
   // --- Reportes de Salud (with AI Chat) ---
   FAM_RENDERS.reportes = function () {
+    if (currentEnv === 'comunicacion') {
+      const allWeekly = REPORTES.filter(r => r.periodo === 'Semanal').slice(0, 6);
+      const allMonthly = REPORTES.filter(r => r.periodo === 'Mensual').slice(0, 6);
+
+      function renderReportesGrid(period) {
+        const data = period === 'semanal' ? allWeekly : allMonthly;
+        const cls = period === 'semanal' ? 'semanal' : 'mensual';
+        const grid = document.getElementById('reportes-grid');
+        if (!grid) return;
+
+        grid.innerHTML = data.map(r => {
+          const estClass = { 'Estable': 'badge-success', 'En observación': 'badge-warning', 'Mejorando': 'badge-info' }[r.estadoGeneral] || 'badge-neutral';
+          return `
+            <div class="reporte-card ${cls}">
+              <div class="card-header">
+                <strong>${r.residente}</strong> · <span class="badge ${estClass}">${r.estadoGeneral}</span>
+              </div>
+              <div class="card-body">
+                <p>${r.evolucion}</p>
+                <div class="vitals-grid">
+                  <div class="vital-item"><div class="vital-label">Presión</div><div class="vital-value">${r.signos.presion}</div></div>
+                  <div class="vital-item"><div class="vital-label">FC</div><div class="vital-value">${r.signos.fc}</div></div>
+                  <div class="vital-item"><div class="vital-label">Temperatura</div><div class="vital-value">${r.signos.temp}</div></div>
+                  <div class="vital-item"><div class="vital-label">SatO₂</div><div class="vital-value">${r.signos.sat}</div></div>
+                </div>
+              </div>
+              <div class="card-foot">
+                <div style="display:flex;justify-content:space-between;align-items:center;width:100%">
+                  <span class="badge badge-${period === 'semanal' ? 'info' : 'lavanda'}">${r.periodo}</span>
+                  <small>${fmtDate(r.fecha)}</small>
+                </div>
+                <div style="display:flex;gap:6px;margin-top:8px">
+                  <button class="btn btn-xs btn-outline ver-reporte-btn" data-rep-id="${r.id}">📄 Ver informe completo</button>
+                  <button class="btn btn-xs btn-secondary report-chat-btn" data-rep-id="${r.id}" style="position:relative">💬 Chat <span class="chat-notif-badge">1</span></button>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        grid.querySelectorAll('.ver-reporte-btn').forEach(btn => {
+          btn.addEventListener('click', function () {
+            const rid = this.dataset.repId;
+            const r = REPORTES.find(x => x.id === rid);
+            if (!r) return;
+            const estClass = { 'Estable': 'badge-success', 'En observación': 'badge-warning', 'Mejorando': 'badge-info' }[r.estadoGeneral] || 'badge-neutral';
+            openModal('Informe completo — ' + r.residente, `
+              <div style="min-width:360px">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+                  <span class="badge ${estClass}" style="font-size:0.85rem;padding:4px 14px">${r.estadoGeneral}</span>
+                  <small>${fmtDate(r.fecha)} · ${r.periodo}</small>
+                </div>
+                <div class="info-banner">🔒 Información confidencial. Fuente: Historial clínico Nexup.</div>
+                <div style="margin:14px 0"><h4>Evolución</h4><p>${r.evolucion}</p></div>
+                <div style="margin:14px 0"><h4>Signos Vitales</h4>
+                  <div class="vitals-grid">
+                    <div class="vital-item"><div class="vital-label">Presión Arterial</div><div class="vital-value">${r.signos.presion}</div></div>
+                    <div class="vital-item"><div class="vital-label">Frecuencia Cardíaca</div><div class="vital-value">${r.signos.fc}</div></div>
+                    <div class="vital-item"><div class="vital-label">Temperatura</div><div class="vital-value">${r.signos.temp}</div></div>
+                    <div class="vital-item"><div class="vital-label">Saturación O₂</div><div class="vital-value">${r.signos.sat}</div></div>
+                  </div>
+                </div>
+                <div style="margin:14px 0;font-size:0.85rem">
+                  <p><strong>Residente:</strong> ${r.residente} · <strong>Fecha:</strong> ${fmtDate(r.fecha)} · <strong>Período:</strong> ${r.periodo}</p>
+                </div>
+              </div>
+            `, '<button class="btn btn-secondary" onclick="document.getElementById(\'modal-overlay\').style.display=\'none\'">Cerrar</button>');
+          });
+        });
+
+        grid.querySelectorAll('.report-chat-btn').forEach(btn => {
+          btn.addEventListener('click', function () {
+            const rid = this.dataset.repId;
+            const r = REPORTES.find(x => x.id === rid);
+            const chat = REPORT_CHATS[rid];
+            if (!r || !chat) return;
+            const chatHtml = `
+              <div style="display:flex;flex-direction:column;height:420px;min-width:360px">
+                <div style="display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--border-color);margin-bottom:12px">
+                  <div class="chat-list-avatar" style="background:#7C3AED;width:36px;height:36px;font-size:0.7rem">SL</div>
+                  <div><div style="font-weight:600;font-size:0.9rem">Sofía López</div><div style="font-size:0.75rem;color:var(--emerald-500)">● En línea</div></div>
+                  <span class="badge badge-info" style="margin-left:auto">${r.residente}</span>
+                </div>
+                <div id="report-chat-msgs" style="flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:4px 0">
+                  ${chat.messages.map(m => `
+                    <div class="msg-bubble ${m.side}" style="max-width:75%;align-self:${m.side === 'sent' ? 'flex-end' : 'flex-start'}">
+                      <strong style="font-size:0.78rem">${m.from}</strong><br>${m.text}
+                      <span class="msg-time">${fmtTime(m.time)} · ${m.side === 'sent' ? 'Visto' : 'Recibido'}</span>
+                    </div>
+                  `).join('')}
+                </div>
+                <div style="display:flex;gap:8px;padding-top:12px;border-top:1px solid var(--border-color)">
+                  <input type="text" class="form-control" id="report-chat-input" placeholder="Escribí tu respuesta..." />
+                  <button class="btn btn-primary btn-sm" id="report-chat-send">Enviar</button>
+                </div>
+              </div>
+            `;
+            openModal('💬 Consulta por Reporte — ' + r.residente, chatHtml, '<button class="btn btn-secondary" onclick="document.getElementById(\'modal-overlay\').style.display=\'none\'">Cerrar</button>');
+            setTimeout(() => {
+              const sendBtn = document.getElementById('report-chat-send');
+              const input = document.getElementById('report-chat-input');
+              const msgs = document.getElementById('report-chat-msgs');
+              if (!sendBtn || !input || !msgs) return;
+              const doSend = () => {
+                const txt = input.value.trim(); if (!txt) return;
+                const bubble = document.createElement('div');
+                bubble.className = 'msg-bubble sent'; bubble.style.maxWidth = '75%'; bubble.style.alignSelf = 'flex-end';
+                bubble.innerHTML = '<strong style="font-size:0.78rem">Laura Mendoza</strong><br>' + txt.replace(/</g,'&lt;') + '<span class="msg-time">' + fmtTime(new Date()) + ' · Enviado</span>';
+                msgs.appendChild(bubble); msgs.scrollTop = msgs.scrollHeight; input.value = '';
+                setTimeout(() => {
+                  const res = document.createElement('div');
+                  res.className = 'msg-bubble received'; res.style.maxWidth = '75%'; res.style.alignSelf = 'flex-start';
+                  const respuestas = ['Gracias por tu mensaje. Lo estamos revisando.', 'Recibido. Te confirmamos cualquier novedad.', 'Entendido. Quedamos atentos a tu consulta.'];
+                  res.innerHTML = '<strong style="font-size:0.78rem">Sofía López</strong><br>' + respuestas[Math.floor(Math.random() * respuestas.length)] + '<span class="msg-time">' + fmtTime(new Date()) + ' · Leído</span>';
+                  msgs.appendChild(res); msgs.scrollTop = msgs.scrollHeight;
+                }, 1200);
+              };
+              sendBtn.addEventListener('click', doSend);
+              input.addEventListener('keydown', function (e) { if (e.key === 'Enter') doSend(); });
+            }, 100);
+          });
+        });
+      }
+
+      famContent.innerHTML = `
+        <div class="info-banner">🔒 Información confidencial y trazable. Solo accesible para personal autorizado. Fuente: Historial clínico Nexup.</div>
+        <div class="section-block">
+          <div style="display:flex;gap:8px;margin-bottom:16px">
+            <button class="report-tab active" data-period="semanal">📅 Semanales</button>
+            <button class="report-tab" data-period="mensual">📆 Mensuales</button>
+          </div>
+          <div id="reportes-grid" class="grid-reportes"></div>
+        </div>
+      `;
+
+      renderReportesGrid('semanal');
+
+      famContent.querySelectorAll('.report-tab').forEach(tab => {
+        tab.addEventListener('click', function () {
+          famContent.querySelectorAll('.report-tab').forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+          renderReportesGrid(this.dataset.period);
+        });
+      });
+      return;
+    }
+
+    // --- Portal Familiar: filtered by resident ---
     const reps = reportsForResident();
 
     let html = `
@@ -1387,7 +1697,6 @@
     `;
     famContent.innerHTML = html;
 
-    // Wire up "Ver informe completo" buttons
     famContent.querySelectorAll('.ver-reporte-fam-btn').forEach(btn => {
       btn.addEventListener('click', function () {
         const rid = this.dataset.repId;
@@ -1401,12 +1710,8 @@
               <small>${fmtDate(r.fecha)} · ${r.periodo}</small>
             </div>
             <div class="info-banner">🔒 Información confidencial. Fuente: Historial clínico Nexup.</div>
-            <div style="margin:14px 0">
-              <h4>Evolución</h4>
-              <p>${r.evolucion}</p>
-            </div>
-            <div style="margin:14px 0">
-              <h4>Signos Vitales</h4>
+            <div style="margin:14px 0"><h4>Evolución</h4><p>${r.evolucion}</p></div>
+            <div style="margin:14px 0"><h4>Signos Vitales</h4>
               <div class="vitals-grid">
                 <div class="vital-item"><div class="vital-label">Presión Arterial</div><div class="vital-value">${r.signos.presion}</div></div>
                 <div class="vital-item"><div class="vital-label">Frecuencia Cardíaca</div><div class="vital-value">${r.signos.fc}</div></div>
@@ -1415,16 +1720,12 @@
               </div>
             </div>
             <div style="margin:14px 0;font-size:0.85rem">
-              <p><strong>Residente:</strong> ${r.residente}</p>
-              <p><strong>Fecha del reporte:</strong> ${fmtDate(r.fecha)}</p>
-              <p><strong>Período:</strong> ${r.periodo}</p>
-              <p><strong>ID del reporte:</strong> ${r.id}</p>
+              <p><strong>Residente:</strong> ${r.residente} · <strong>Fecha:</strong> ${fmtDate(r.fecha)} · <strong>Período:</strong> ${r.periodo}</p>
             </div>
           </div>
         `, '<button class="btn btn-secondary" onclick="document.getElementById(\'modal-overlay\').style.display=\'none\'">Cerrar</button>');
       });
     });
-    // Wire up "Consultar" buttons — open chat modal per report
     famContent.querySelectorAll('.fam-consulta-btn').forEach(btn => {
       btn.addEventListener('click', function () {
         const rid = this.dataset.repId;
@@ -1435,16 +1736,12 @@
           <div style="display:flex;flex-direction:column;height:400px">
             <div style="display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--border);margin-bottom:12px">
               <div style="width:36px;height:36px;border-radius:50%;background:#10B981;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.7rem">EI</div>
-              <div>
-                <div style="font-weight:600;font-size:0.85rem">Consulta: ${r.residente}</div>
-                <div style="font-size:0.75rem;color:var(--muted)">● En línea</div>
-              </div>
+              <div><div style="font-weight:600;font-size:0.85rem">Consulta: ${r.residente}</div><div style="font-size:0.75rem;color:var(--muted)">● En línea</div></div>
             </div>
             <div class="chat-conv-messages" id="fam-rchat-msgs" style="flex:1;overflow-y:auto;padding:8px 0">
               ${chat.messages.map(m => `
                 <div class="msg-bubble ${m.side}" style="max-width:75%;margin-bottom:10px">
-                  <strong style="font-size:0.78rem">${m.from}</strong><br>
-                  ${m.text}
+                  <strong style="font-size:0.78rem">${m.from}</strong><br>${m.text}
                   <span class="msg-time">${fmtTime(m.time)} · ${m.side === 'received' ? 'Leído' : 'Entregado'}</span>
                 </div>
               `).join('')}
@@ -1456,30 +1753,23 @@
           </div>
         `;
         openModal('💬 Consulta — ' + r.residente, chatBody, '<button class="btn btn-secondary" onclick="document.getElementById(\'modal-overlay\').style.display=\'none\'">Cerrar</button>');
-        // Wire send inside modal
         setTimeout(() => {
           const sendBtn = document.getElementById('fam-rchat-send');
           const input = document.getElementById('fam-rchat-input');
           const msgs = document.getElementById('fam-rchat-msgs');
           if (!sendBtn || !input || !msgs) return;
           const doSend = () => {
-            const txt = input.value.trim();
-            if (!txt) return;
+            const txt = input.value.trim(); if (!txt) return;
             const bubble = document.createElement('div');
-            bubble.className = 'msg-bubble sent';
-            bubble.style.maxWidth = '75%';
-            bubble.innerHTML = `<strong style="font-size:0.78rem">Sofía López</strong><br>${txt}<span class="msg-time">${fmtTime(new Date())} · Entregado</span>`;
-            msgs.appendChild(bubble);
-            msgs.scrollTop = msgs.scrollHeight;
-            input.value = '';
+            bubble.className = 'msg-bubble sent'; bubble.style.maxWidth = '75%';
+            bubble.innerHTML = '<strong style="font-size:0.78rem">Sofía López</strong><br>' + txt.replace(/</g,'&lt;') + '<span class="msg-time">' + fmtTime(new Date()) + ' · Entregado</span>';
+            msgs.appendChild(bubble); msgs.scrollTop = msgs.scrollHeight; input.value = '';
             setTimeout(() => {
               const res = document.createElement('div');
-              res.className = 'msg-bubble received';
-              res.style.maxWidth = '75%';
+              res.className = 'msg-bubble received'; res.style.maxWidth = '75%';
               const respuestas = ['Gracias por tu consulta. El equipo la está revisando.', 'Hemos recibido tu mensaje. Te responderemos pronto.', 'Consulta registrada. Te confirmamos novedades.'];
-              res.innerHTML = `<strong style="font-size:0.78rem">Equipo Interdisciplinario</strong><br>${respuestas[Math.floor(Math.random() * respuestas.length)]}<span class="msg-time">${fmtTime(new Date())} · Leído</span>`;
-              msgs.appendChild(res);
-              msgs.scrollTop = msgs.scrollHeight;
+              res.innerHTML = '<strong style="font-size:0.78rem">Equipo Interdisciplinario</strong><br>' + respuestas[Math.floor(Math.random() * respuestas.length)] + '<span class="msg-time">' + fmtTime(new Date()) + ' · Leído</span>';
+              msgs.appendChild(res); msgs.scrollTop = msgs.scrollHeight;
             }, 1200);
           };
           sendBtn.addEventListener('click', doSend);
@@ -1494,7 +1784,6 @@
     const acts = activitiesForResident();
 
     let html = `
-      <div class="section-title" style="font-size:1rem"><span class="ico">📅</span> Calendario de Actividades</div>
       <div class="cols-2-60-40">
         <div id="fam-cal-col"></div>
         <div>
@@ -1587,8 +1876,6 @@
     }
 
     let html = `
-      <div class="section-title"><span class="ico">🎟️</span> Invitaciones</div>
-
       ${pendientes.length ? `
         <div class="section-title" style="font-size:1rem;color:var(--warning)"><span class="ico">⏳</span> Pendientes (${pendientes.length})</div>
         ${pendientes.map(a => renderInvitacion(a, 'pending')).join('')}
@@ -1647,95 +1934,444 @@
     });
   };
 
-  // --- Reuniones ---
-  FAM_RENDERS.reuniones = function () {
-    const prox = REUNIONES.find(r => r.proxima);
-    const todas = REUNIONES;
+  // --- Reuniones (Staff: versión administrativa completa) ---
+  FAM_RENDERS['reuniones-staff'] = function () {
+    const prox = REUNIONES.find(r => r.proxima && r.estado !== 'cancelada');
+    const todas = REUNIONES.length;
+    const presenciales = REUNIONES.filter(r => r.modalidad === 'Presencial').length;
+    const virtuales = REUNIONES.filter(r => r.modalidad === 'Virtual').length;
+    const conformidadAlta = REUNIONES.filter(r => r.conformidad === 'Alta').length;
+    const evaluadas = REUNIONES.filter(r => r.conformidad !== 'Pendiente').length;
+    const próxCount = REUNIONES.filter(r => r.proxima && r.estado !== 'cancelada').length;
 
     let html = `
-      <div class="section-title"><span class="ico">🤝</span> Reuniones y Seguimiento</div>
-
-      <div class="section-block">
-        <div class="section-title" style="font-size:1rem;color:var(--primary)"><span class="ico">📅</span> Próxima Reunión</div>
-        ${prox ? `
-          <div class="meeting-card">
-            <div class="meeting-date-box">
-              <div class="meeting-date-num">${prox.fecha.getDate()}</div>
-              <div class="meeting-date-month">${prox.fecha.toLocaleDateString('es-AR', { month: 'short' })}</div>
-            </div>
-            <div class="meeting-info">
-              <h4>${prox.titulo}</h4>
-              <div class="meeting-meta">
-                <span>🕐 ${fmtTime(prox.fecha)}</span>
-                <span>📍 ${prox.lugar || 'Virtual'}</span>
-                <span class="badge badge-${prox.modalidad === 'Presencial' ? 'info' : 'lavanda'}">${prox.modalidad}</span>
+      <div class="cols-2" style="gap:20px">
+        <div>
+          <h3 style="font-family:var(--font-body);font-size:1rem;margin-bottom:12px;font-weight:600;">📅 Calendario de Reuniones</h3>
+          <div id="reuniones-cal-staff"></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="card" style="padding:16px">
+            <h4 style="font-size:0.9rem;margin-bottom:10px;font-family:var(--font-body)">📌 Próxima reunión</h4>
+            ${prox ? `
+              <div style="display:flex;gap:12px;align-items:center">
+                <div class="meeting-date-box" style="min-width:48px;padding:6px 10px">
+                  <div class="meeting-date-num" style="font-size:1.2rem">${prox.fecha.getDate()}</div>
+                  <div class="meeting-date-month" style="font-size:0.6rem">${prox.fecha.toLocaleDateString('es-AR', { month: 'short' })}</div>
+                </div>
+                <div style="flex:1;min-width:0">
+                  <strong style="font-size:0.85rem">${prox.titulo}</strong>
+                  <div style="display:flex;gap:8px;font-size:0.75rem;color:var(--text-secondary);flex-wrap:wrap;margin-top:2px">
+                    <span>🕐 ${fmtTime(prox.fecha)}</span>
+                    <span>📍 ${prox.lugar || 'Virtual'}</span>
+                    <span class="badge badge-info">${prox.modalidad}</span>
+                  </div>
+                </div>
               </div>
-              <small style="margin-top:6px;display:block;">Participantes: ${prox.participantes.join(', ')}</small>
-              ${prox.modalidad === 'Virtual' && prox.link ? `
-                <button class="btn btn-primary btn-sm" style="margin-top:8px" onclick="window.open('${prox.link}','_blank')">🔗 Unirse a videollamada</button>
-              ` : ''}
+            ` : '<p style="font-size:0.85rem;color:var(--text-muted)">No hay reuniones próximas.</p>'}
+          </div>
+
+          <div class="card" style="padding:16px">
+            <h4 style="font-size:0.9rem;margin-bottom:10px;font-family:var(--font-body)">📊 Resumen</h4>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <div style="text-align:center;padding:10px;background:var(--bg-body);border-radius:8px">
+                <div style="font-size:1.3rem;font-weight:700;color:var(--primary)">${todas}</div>
+                <div style="font-size:0.7rem;color:var(--text-muted)">Total</div>
+              </div>
+              <div style="text-align:center;padding:10px;background:var(--bg-body);border-radius:8px">
+                <div style="font-size:1.3rem;font-weight:700;color:var(--emerald-500)">${próxCount}</div>
+                <div style="font-size:0.7rem;color:var(--text-muted)">Próximas</div>
+              </div>
+              <div style="text-align:center;padding:10px;background:var(--bg-body);border-radius:8px">
+                <div style="font-size:1.3rem;font-weight:700;color:var(--peach)">${presenciales}</div>
+                <div style="font-size:0.7rem;color:var(--text-muted)">Presenciales</div>
+              </div>
+              <div style="text-align:center;padding:10px;background:var(--bg-body);border-radius:8px">
+                <div style="font-size:1.3rem;font-weight:700;color:var(--sky)">${virtuales}</div>
+                <div style="font-size:0.7rem;color:var(--text-muted)">Virtuales</div>
+              </div>
             </div>
           </div>
-        ` : '<p>No hay reuniones agendadas próximamente.</p>'}
+
+          <div class="card" style="padding:16px">
+            <h4 style="font-size:0.9rem;margin-bottom:8px;font-family:var(--font-body)">👥 Participantes Frecuentes</h4>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              ${(() => {
+                const freq = {};
+                REUNIONES.forEach(r => r.participantes.forEach(p => { freq[p] = (freq[p] || 0) + 1; }));
+                return Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([name, count]) => `
+                  <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.82rem">
+                    <span style="color:var(--text-secondary)">${name}</span>
+                    <span class="badge badge-neutral">${count} reuniones</span>
+                  </div>
+                `).join('');
+              })()}
+            </div>
+          </div>
+
+          <div class="card" style="padding:16px">
+            <h4 style="font-size:0.9rem;margin-bottom:8px;font-family:var(--font-body)">✅ Conformidad</h4>
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="flex:1;height:8px;background:var(--bg-body);border-radius:4px;overflow:hidden">
+                <div style="height:100%;width:${evaluadas ? (conformidadAlta / evaluadas * 100).toFixed(0) : 0}%;background:var(--emerald-500);border-radius:4px"></div>
+              </div>
+              <span style="font-size:0.82rem;font-weight:600;color:var(--emerald-500)">${evaluadas ? (conformidadAlta / evaluadas * 100).toFixed(0) : 0}%</span>
+            </div>
+            <p style="font-size:0.75rem;color:var(--text-muted);margin-top:4px">${conformidadAlta} de ${evaluadas} reuniones evaluadas con conformidad alta</p>
+          </div>
+        </div>
       </div>
 
-      <div class="section-block">
-        <div class="section-title" style="font-size:1rem"><span class="ico">📜</span> Historial de Reuniones</div>
+      <div class="section-block" style="margin-top:20px;">
+        <div class="section-title"><span class="ico">📜</span> Historial de Minutas</div>
         <div class="card">
-          ${REUNIONES.map(r => `
+          ${REUNIONES.filter(r => new Date(r.fecha) < NOW).map(r => `
             <div class="minuta-item" onclick="this.classList.toggle('expanded')">
               <div class="minuta-summary">
                 <div>
-                  <strong>${r.titulo}</strong><br>
-                  <small>${fmtDate(r.fecha)} · ${r.modalidad} ${r.lugar ? '· ' + r.lugar : ''}</small>
+                  <strong>${r.titulo}</strong>
+                  <span style="font-size:0.75rem;color:var(--text-muted);display:block">${fmtDate(r.fecha)} · ${r.modalidad} ${r.lugar ? '· ' + r.lugar : ''}</span>
                 </div>
-                <div>
-                  <span style="color:var(--text-muted)">${r.conformidad}</span>
-                  <span style="margin-left:8px;font-size:0.8rem">▼</span>
+                <div style="display:flex;align-items:center;gap:8px">
+                  <span class="btn btn-xs btn-outline" style="font-size:0.7rem;padding:2px 8px;cursor:pointer">Ver detalles</span>
+                  <span style="font-size:0.7rem;color:var(--text-muted)">▼</span>
                 </div>
               </div>
               <div class="minuta-details">
                 <div class="info-banner" style="margin:8px 0">📋 Registro de observaciones de la reunión</div>
                 <p>${r.minuta}</p>
-                <div style="margin-top:8px;font-size:0.85rem">
+                <div style="margin-top:8px;font-size:0.82rem">
                   <strong>Participantes:</strong> ${r.participantes.join(', ')}<br>
-                  <strong>Conformidad del familiar:</strong> ${r.conformidad}
+                  <strong>Conformidad:</strong> ${r.conformidad}
                 </div>
                 <button class="btn btn-sm btn-secondary" style="margin-top:8px">📄 Descargar minuta</button>
               </div>
             </div>
           `).join('')}
         </div>
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <div class="card" style="padding:16px">
-          <h4 style="font-size:0.9rem;margin-bottom:8px;font-family:var(--font-body)">👥 Participantes Frecuentes</h4>
-          <div style="display:flex;flex-direction:column;gap:6px">
-            ${(() => {
-              const freq = {};
-              REUNIONES.forEach(r => r.participantes.forEach(p => { freq[p] = (freq[p] || 0) + 1; }));
-              return Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([name, count]) => `
-                <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.82rem">
-                  <span style="color:var(--text-secondary)">${name}</span>
-                  <span class="badge badge-neutral">${count} reuniones</span>
-                </div>
-              `).join('');
-            })()}
-          </div>
-        </div>
-
-        <div class="card" style="padding:16px">
-          <h4 style="font-size:0.9rem;margin-bottom:8px;font-family:var(--font-body)">✅ Conformidad</h4>
-          <div style="display:flex;align-items:center;gap:10px">
-            <div style="flex:1;height:8px;background:var(--bg-body);border-radius:4px;overflow:hidden">
-              <div style="height:100%;width:${(conformidadAlta / todas * 100).toFixed(0)}%;background:var(--emerald-500);border-radius:4px"></div>
-            </div>
-            <span style="font-size:0.82rem;font-weight:600;color:var(--emerald-500)">${(conformidadAlta / todas * 100).toFixed(0)}%</span>
-          </div>
-          <p style="font-size:0.75rem;color:var(--text-muted);margin-top:4px">${conformidadAlta} de ${todas} reuniones con conformidad alta</p>
-        </div>
       </div>
     `;
     famContent.innerHTML = html;
+
+    const calContainer = $id('reuniones-cal-staff');
+    if (calContainer) {
+      renderCalendar(calContainer, REUNIONES, 'reuniones');
+      const calCard = calContainer.querySelector('.card');
+      if (calCard) {
+        const h3 = calCard.querySelector('h3');
+        if (h3) {
+          const rightSide = h3.parentElement.querySelector(':scope > div:last-child');
+          if (rightSide) {
+            const btn = document.createElement('button');
+            btn.className = 'btn btn-primary btn-sm';
+            btn.id = 'btn-nueva-reunion-staff';
+            btn.style.marginRight = '8px';
+            btn.textContent = '📊 Programar Reunión';
+            rightSide.prepend(btn);
+          }
+        }
+      }
+    }
+
+    const btnNueva = $id('btn-nueva-reunion-staff');
+    if (btnNueva) {
+      btnNueva.addEventListener('click', function () {
+        openModal('Programar Nueva Reunión', `
+          <div style="min-width:420px">
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div>
+                <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:4px">Nombre del residente</label>
+                <select class="form-control" id="new-reu-residente-s">
+                  ${RESIDENTES.map(r => `<option value="${r.id}">${r.nombre}</option>`).join('')}
+                </select>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                <div>
+                  <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:4px">Fecha</label>
+                  <input type="date" class="form-control" id="new-reu-fecha-s" />
+                </div>
+                <div>
+                  <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:4px">Hora</label>
+                  <input type="time" class="form-control" id="new-reu-hora-s" value="10:00" />
+                </div>
+              </div>
+              <div>
+                <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:4px">Modalidad</label>
+                <select class="form-control" id="new-reu-modalidad-s">
+                  <option value="Presencial">Presencial</option>
+                  <option value="Virtual">Virtual</option>
+                </select>
+              </div>
+              <div id="new-reu-lugar-wrap-s">
+                <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:4px">Lugar</label>
+                <select class="form-control" id="new-reu-lugar-s">
+                  <option>Salón Comedor Principal</option>
+                  <option>Sala de Reuniones 1er Piso</option>
+                  <option>Consultorio 1</option>
+                  <option>Consultorio 2</option>
+                  <option>Salón Multiusos</option>
+                </select>
+              </div>
+              <div>
+                <label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:4px">Participantes (separar con coma)</label>
+                <input type="text" class="form-control" id="new-reu-participantes-s" placeholder="Dr. García, Lic. Fernández, Fam. López" />
+              </div>
+            </div>
+          </div>
+        `, `<button class="btn btn-secondary" onclick="document.getElementById('modal-overlay').style.display='none'">Cancelar</button>
+            <button class="btn btn-primary" id="btn-guardar-reunion-s">Guardar Reunión</button>`);
+
+        const modalidadSel = $id('new-reu-modalidad-s');
+        const lugarWrap = $id('new-reu-lugar-wrap-s');
+        if (modalidadSel && lugarWrap) {
+          modalidadSel.addEventListener('change', function () {
+            if (this.value === 'Virtual') {
+              lugarWrap.innerHTML = '<label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:4px">Link de reunión</label><input type="url" class="form-control" id="new-reu-link-s" placeholder="https://meet.google.com/..." />';
+            } else {
+              lugarWrap.innerHTML = '<label style="font-size:0.82rem;font-weight:600;display:block;margin-bottom:4px">Lugar</label><select class="form-control" id="new-reu-lugar-s"><option>Salón Comedor Principal</option><option>Sala de Reuniones 1er Piso</option><option>Consultorio 1</option><option>Consultorio 2</option><option>Salón Multiusos</option></select>';
+            }
+          });
+        }
+
+        const btnSave = $id('btn-guardar-reunion-s');
+        if (btnSave) {
+          btnSave.addEventListener('click', function () {
+            const resId = $id('new-reu-residente-s')?.value;
+            const res = residentePorId(Number(resId));
+            const fechaVal = $id('new-reu-fecha-s')?.value;
+            const hora = $id('new-reu-hora-s')?.value;
+            const modalidad = $id('new-reu-modalidad-s')?.value;
+            const participantesRaw = $id('new-reu-participantes-s')?.value || '';
+            if (!fechaVal) { showToast('Seleccioná una fecha', 'warning'); return; }
+            const [h, m] = (hora || '10:00').split(':').map(Number);
+            const fecha = new Date(fechaVal + 'T12:00:00');
+            fecha.setHours(h, m);
+            const participantes = participantesRaw.split(',').map(s => s.trim()).filter(Boolean);
+            if (res) participantes.unshift('Fam. ' + res.nombre.split(' ').pop());
+            const lugar = modalidad === 'Presencial' ? ($id('new-reu-lugar-s')?.value || '') : '';
+            const link = modalidad === 'Virtual' ? ($id('new-reu-link-s')?.value || '') : '';
+            REUNIONES.push({
+              id: 'reu-new-' + Date.now(),
+              titulo: 'Reunión mensual: ' + (res ? res.nombre : 'Residente'),
+              fecha: fecha,
+              modalidad: modalidad,
+              lugar: lugar,
+              link: link,
+              proxima: true,
+              estado: 'pendiente',
+              participantes: participantes,
+              minuta: 'Reunión programada. La minuta será completada tras la reunión.',
+              conformidad: 'Pendiente',
+            });
+            REUNIONES.sort((a, b) => a.fecha - b.fecha);
+            closeModal();
+            showToast('Reunión programada exitosamente', 'success');
+            FAM_RENDERS['reuniones-staff']();
+          });
+        }
+      });
+    }
+  };
+
+  // --- Reuniones (Familiares) ---
+  FAM_RENDERS.reuniones = function () {
+    const prox = REUNIONES.find(r => r.proxima && r.estado !== 'cancelada');
+    const isComunicacion = currentEnv === 'comunicacion';
+    const res = residentePorId(currentFamResident);
+
+    let html = '';
+
+    if (isComunicacion) {
+      const todasReu = REUNIONES.length;
+      const evaluadasReu = REUNIONES.filter(r => r.conformidad !== 'Pendiente').length;
+      const conformidadAlta = REUNIONES.filter(r => r.conformidad === 'Alta').length;
+      html = `
+        <div class="section-block">
+          <div class="section-title" style="font-size:1rem;color:var(--primary)"><span class="ico">📅</span> Próxima Reunión</div>
+          ${prox ? `
+            <div class="meeting-card">
+              <div class="meeting-date-box">
+                <div class="meeting-date-num">${prox.fecha.getDate()}</div>
+                <div class="meeting-date-month">${prox.fecha.toLocaleDateString('es-AR', { month: 'short' })}</div>
+              </div>
+              <div class="meeting-info">
+                <h4>${prox.titulo}</h4>
+                <div class="meeting-meta">
+                  <span>🕐 ${fmtTime(prox.fecha)}</span>
+                  <span>📍 ${prox.lugar || 'Virtual'}</span>
+                  <span class="badge badge-${prox.modalidad === 'Presencial' ? 'info' : 'lavanda'}">${prox.modalidad}</span>
+                </div>
+                <small style="margin-top:6px;display:block;">Participantes: ${prox.participantes.join(', ')}</small>
+                ${prox.modalidad === 'Virtual' && prox.link ? `
+                  <button class="btn btn-primary btn-sm" style="margin-top:8px" onclick="window.open('${prox.link}','_blank')">🔗 Unirse a videollamada</button>
+                ` : ''}
+              </div>
+            </div>
+          ` : '<p>No hay reuniones agendadas próximamente.</p>'}
+        </div>
+
+        <div class="section-block">
+          <div class="section-title" style="font-size:1rem"><span class="ico">📜</span> Historial de Reuniones</div>
+          <div class="card">
+            ${REUNIONES.filter(r => new Date(r.fecha) < NOW).map(r => `
+              <div class="minuta-item" onclick="this.classList.toggle('expanded')">
+                <div class="minuta-summary">
+                  <div>
+                    <strong>${r.titulo}</strong><br>
+                    <small>${fmtDate(r.fecha)} · ${r.modalidad} ${r.lugar ? '· ' + r.lugar : ''}</small>
+                  </div>
+                  <div>
+                    <span class="btn btn-xs btn-outline" style="font-size:0.7rem;padding:2px 8px;cursor:pointer">Ver detalles</span>
+                    <span style="margin-left:8px;font-size:0.8rem">▼</span>
+                  </div>
+                </div>
+                <div class="minuta-details">
+                  <div class="info-banner" style="margin:8px 0">📋 Registro de observaciones de la reunión</div>
+                  <p>${r.minuta}</p>
+                  <div style="margin-top:8px;font-size:0.85rem">
+                    <strong>Participantes:</strong> ${r.participantes.join(', ')}<br>
+                    <strong>Conformidad:</strong> ${r.conformidad}
+                  </div>
+                  <button class="btn btn-sm btn-secondary" style="margin-top:8px">📄 Descargar minuta</button>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="card" style="padding:16px">
+            <h4 style="font-size:0.9rem;margin-bottom:8px;font-family:var(--font-body)">👥 Participantes Frecuentes</h4>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              ${(() => {
+                const freq = {};
+                REUNIONES.forEach(r => r.participantes.forEach(p => { freq[p] = (freq[p] || 0) + 1; }));
+                return Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([name, count]) => `
+                  <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.82rem">
+                    <span style="color:var(--text-secondary)">${name}</span>
+                    <span class="badge badge-neutral">${count} reuniones</span>
+                  </div>
+                `).join('');
+              })()}
+            </div>
+          </div>
+
+          <div class="card" style="padding:16px">
+            <h4 style="font-size:0.9rem;margin-bottom:8px;font-family:var(--font-body)">✅ Conformidad</h4>
+            <div style="display:flex;align-items:center;gap:10px">
+              <div style="flex:1;height:8px;background:var(--bg-body);border-radius:4px;overflow:hidden">
+                <div style="height:100%;width:${evaluadasReu ? (conformidadAlta / evaluadasReu * 100).toFixed(0) : 0}%;background:var(--emerald-500);border-radius:4px"></div>
+              </div>
+              <span style="font-size:0.82rem;font-weight:600;color:var(--emerald-500)">${evaluadasReu ? (conformidadAlta / evaluadasReu * 100).toFixed(0) : 0}%</span>
+            </div>
+            <p style="font-size:0.75rem;color:var(--text-muted);margin-top:4px">${conformidadAlta} de ${evaluadasReu} reuniones evaluadas con conformidad alta</p>
+          </div>
+        </div>
+      `;
+    } else {
+      const estadoResp = prox?.respuestaFamiliar?.[currentFamResident];
+      html = `
+        <div class="section-block">
+          <div class="section-title" style="font-size:1rem;color:var(--primary)"><span class="ico">📅</span> Solicitud de Reunión</div>
+          ${prox ? `
+            <div class="meeting-card" style="margin-bottom:0">
+              <div class="meeting-date-box">
+                <div class="meeting-date-num">${prox.fecha.getDate()}</div>
+                <div class="meeting-date-month">${prox.fecha.toLocaleDateString('es-AR', { month: 'short' })}</div>
+              </div>
+              <div class="meeting-info">
+                <h4>${prox.titulo}</h4>
+                <div class="meeting-meta">
+                  <span>🕐 ${fmtTime(prox.fecha)}</span>
+                  <span>📍 ${prox.lugar || 'Virtual'}</span>
+                  <span class="badge badge-${prox.modalidad === 'Presencial' ? 'info' : 'lavanda'}">${prox.modalidad}</span>
+                </div>
+                <small style="margin-top:6px;display:block;">Participantes: ${prox.participantes.join(', ')}</small>
+                <div style="margin-top:14px;padding:14px;background:var(--bg-body);border-radius:10px;font-size:0.85rem">
+                  ${!estadoResp ? `
+                    <p style="margin-bottom:12px">El equipo ha propuesto esta fecha para tu reunión de seguimiento. ¿Te gustaría confirmar tu asistencia?</p>
+                    <div style="display:flex;gap:8px">
+                      <button class="btn btn-primary btn-sm" id="btn-aceptar-reunion">✅ Aceptar</button>
+                      <button class="btn btn-secondary btn-sm" id="btn-rechazar-reunion">❌ Rechazar</button>
+                    </div>
+                  ` : estadoResp === 'aceptada' ? `
+                    <p>✅ <strong>Has aceptado esta reunión.</strong> Te esperamos el día indicado.</p>
+                    ${prox.modalidad === 'Virtual' && prox.link ? `
+                      <button class="btn btn-primary btn-sm" style="margin-top:10px" onclick="window.open('${prox.link}','_blank')">🔗 Unirse a videollamada</button>
+                    ` : ''}
+                  ` : `
+                    <p>❌ <strong>Has rechazado esta reunión.</strong> El equipo se comunicará para reprogramar una nueva fecha.</p>
+                  `}
+                </div>
+              </div>
+            </div>
+          ` : '<p style="font-size:0.85rem;color:var(--text-muted)">No hay solicitudes de reunión pendientes.</p>'}
+        </div>
+      `;
+
+      const pasadas = REUNIONES.filter(r => !r.proxima && new Date(r.fecha) < NOW && (res ? r.titulo.includes(res.nombre) : false)).map(r => {
+        const variedad = ['Alta', 'Media', 'Baja'];
+        const confActual = r.conformidad !== 'Pendiente' ? r.conformidad : variedad[Math.floor(Math.random() * 3)];
+        return { ...r, conformidad: confActual };
+      });
+      if (pasadas.length) {
+        html += `
+          <div class="section-block">
+            <div class="section-title" style="font-size:1rem"><span class="ico">📜</span> Reuniones Pasadas</div>
+            <p style="font-size:0.78rem;color:var(--text-muted);margin-bottom:10px">Cada reunión tiene una valoración de conformidad según la experiencia del familiar.</p>
+            <div class="card">
+              ${pasadas.map(r => `
+                <div class="minuta-item" onclick="this.classList.toggle('expanded')">
+                  <div class="minuta-summary">
+                    <div>
+                      <strong>${r.titulo}</strong><br>
+                      <small>${fmtDate(r.fecha)} · ${r.modalidad} ${r.lugar ? '· ' + r.lugar : ''}</small>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:8px">
+                      <span class="badge badge-${r.conformidad === 'Alta' ? 'success' : r.conformidad === 'Media' ? 'warning' : 'neutral'}" title="Nivel de conformidad">${r.conformidad}</span>
+                      <span class="btn btn-xs btn-outline" style="font-size:0.7rem;padding:2px 8px;cursor:pointer">Ver detalles</span>
+                      <span style="margin-left:4px;font-size:0.8rem">▼</span>
+                    </div>
+                  </div>
+                  <div class="minuta-details">
+                    <div class="info-banner" style="margin:8px 0">📋 Registro de observaciones de la reunión</div>
+                    <p>${r.minuta}</p>
+                    <div style="margin-top:8px;font-size:0.85rem">
+                      <strong>Participantes:</strong> ${r.participantes.join(', ')}<br>
+                      <strong>Conformidad del familiar:</strong> ${r.conformidad}
+                    </div>
+                    <button class="btn btn-sm btn-secondary" style="margin-top:8px">📄 Descargar minuta</button>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    famContent.innerHTML = html;
+
+    if (!isComunicacion && prox) {
+      const btnAceptar = $id('btn-aceptar-reunion');
+      const btnRechazar = $id('btn-rechazar-reunion');
+      if (btnAceptar) {
+        btnAceptar.addEventListener('click', function () {
+          if (!prox.respuestaFamiliar) prox.respuestaFamiliar = {};
+          prox.respuestaFamiliar[currentFamResident] = 'aceptada';
+          showToast('Has aceptado la reunión', 'success');
+          FAM_RENDERS.reuniones();
+        });
+      }
+      if (btnRechazar) {
+        btnRechazar.addEventListener('click', function () {
+          if (!prox.respuestaFamiliar) prox.respuestaFamiliar = {};
+          prox.respuestaFamiliar[currentFamResident] = 'rechazada';
+          showToast('Has rechazado la reunión', 'info');
+          FAM_RENDERS.reuniones();
+        });
+      }
+    }
   };
 
   // ========================================================================
