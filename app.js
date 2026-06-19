@@ -1661,7 +1661,7 @@
       return;
     }
 
-    // --- Portal Familiar: filtered by resident ---
+    // --- Vista Familiar: filtered by resident ---
     const reps = reportsForResident();
 
     let html = `
