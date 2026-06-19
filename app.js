@@ -151,103 +151,181 @@
 
   const REUNIONES = [
     {
-      id: 'reu-1',
+      id: 'reu-1f2',
+      titulo: 'Reunión mensual: Juan Pérez',
+      fecha: new Date(YEAR, MONTH, 10, 10, 0),
+      modalidad: 'Virtual',
+      link: 'https://meet.google.com/juan-apr-10',
+      proxima: true,
+      participantes: ['Dr. García', 'Lic. Fernández', 'Ana Pérez (Familiar)'],
+      minuta: 'Pendiente de realización.',
+      conformidad: 'Pendiente',
+    },
+    {
+      id: 'reu-1f3',
+      titulo: 'Reunión mensual: María López',
+      fecha: new Date(YEAR, MONTH, 12, 9, 0),
+      modalidad: 'Presencial',
+      lugar: 'Sala de Reuniones 1er Piso',
+      proxima: true,
+      participantes: ['Laura M.', 'Dr. García', 'Sofía López (Familiar)'],
+      minuta: 'Pendiente de realización.',
+      conformidad: 'Pendiente',
+    },
+    {
+      id: 'reu-1f4',
+      titulo: 'Reunión mensual: Carlos Sánchez',
+      fecha: new Date(YEAR, MONTH, 15, 11, 0),
+      modalidad: 'Presencial',
+      lugar: 'Consultorio 2',
+      proxima: true,
+      participantes: ['Laura M.', 'Dr. García', 'Martín Sánchez (Familiar)'],
+      minuta: 'Pendiente de realización.',
+      conformidad: 'Pendiente',
+    },
+    {
+      id: 'reu-1f5',
+      titulo: 'Reunión mensual: Rosa Giménez',
+      fecha: new Date(YEAR, MONTH, 18, 14, 0),
+      modalidad: 'Virtual',
+      link: 'https://meet.google.com/ros-jun-18',
+      proxima: true,
+      participantes: ['Dr. García', 'Lic. Fernández', 'Carlos Giménez (Familiar)'],
+      minuta: 'Pendiente de realización.',
+      conformidad: 'Pendiente',
+    },
+    {
+      id: 'reu-1f6',
       titulo: 'Reunión mensual: María López',
       fecha: new Date(YEAR, MONTH, 20, 10, 0),
+      modalidad: 'Virtual',
+      link: 'https://meet.google.com/may-jun-20',
+      proxima: true,
+      participantes: ['Laura M. (Coordinación)', 'Dr. García', 'Sofía López (Familiar)'],
+      minuta: 'Pendiente de realización.',
+      conformidad: 'Pendiente',
+    },
+    {
+      id: 'reu-1f7',
+      titulo: 'Reunión mensual: Carlos Sánchez',
+      fecha: new Date(YEAR, MONTH, 25, 10, 0),
       modalidad: 'Presencial',
       lugar: 'Salón Comedor Principal',
       proxima: true,
-      participantes: ['Laura M. (Coordinación)', 'Dr. García', 'Sofía López (Familiar)'],
+      participantes: ['Laura M.', 'Dr. García', 'Martín Sánchez (Familiar)'],
+      minuta: 'Pendiente de realización.',
+      conformidad: 'Pendiente',
+    },
+    {
+      id: 'reu-1f8',
+      titulo: 'Reunión mensual: Rosa Giménez',
+      fecha: new Date(YEAR, MONTH, 28, 11, 0),
+      modalidad: 'Presencial',
+      lugar: 'Sala de Reuniones 1er Piso',
+      proxima: true,
+      participantes: ['Dr. García', 'Lic. Fernández', 'Carlos Giménez (Familiar)'],
+      minuta: 'Pendiente de realización.',
+      conformidad: 'Pendiente',
+    },
+    // --- PASADAS ---
+    {
+      id: 'reu-p1',
+      titulo: 'Reunión mensual: María López',
+      fecha: new Date(YEAR, MONTH - 1, 18, 10, 0),
+      modalidad: 'Presencial',
+      lugar: 'Salón Comedor Principal',
+      proxima: false,
+      participantes: ['Laura M.', 'Dr. García', 'Sofía López (Familiar)'],
       minuta: 'Se compartió la evolución general de María con la familia. Se resolvieron dudas sobre rutinas de medicación y horarios de visita. Se acordó seguimiento mensual.',
       conformidad: 'Alta',
     },
     {
-      id: 'reu-2',
+      id: 'reu-p2',
       titulo: 'Reunión mensual: Rosa Giménez',
-      fecha: new Date(YEAR, MONTH, 21, 11, 0),
+      fecha: new Date(YEAR, MONTH - 1, 20, 11, 0),
       modalidad: 'Virtual',
       link: 'https://meet.google.com/abc-defg-hij',
-      proxima: true,
+      proxima: false,
       participantes: ['Dr. García', 'Lic. Fernández', 'Carlos Giménez (Familiar)'],
       minuta: 'Evaluación mensual de Rosa. Se revisaron avances en estimulación cognitiva y se ajustó el plan de alimentación. La familia manifestó conformidad.',
       conformidad: 'Alta',
     },
     {
-      id: 'reu-3',
+      id: 'reu-p3',
       titulo: 'Reunión mensual: Juan Pérez',
-      fecha: new Date(YEAR, MONTH, 23, 14, 0),
+      fecha: new Date(YEAR, MONTH - 1, 22, 14, 0),
       modalidad: 'Presencial',
       lugar: 'Consultorio 1',
-      proxima: true,
+      proxima: false,
       participantes: ['Laura M.', 'Dr. García', 'Kinesióloga', 'Ana Pérez (Familiar)'],
       minuta: 'Revisión del plan de atención de Juan. Se evaluaron avances en fisioterapia y se ajustó plan nutricional para diabetes tipo 2.',
       conformidad: 'Alta',
     },
     {
-      id: 'reu-4',
+      id: 'reu-p4',
+      titulo: 'Reunión mensual: María López',
+      fecha: new Date(YEAR, MONTH - 2, 15, 10, 0),
+      modalidad: 'Virtual',
+      link: 'https://meet.google.com/mno-pqr-stu',
+      proxima: false,
+      participantes: ['Laura M.', 'Dr. García', 'Sofía López (Familiar)'],
+      minuta: 'Revisión bimestral de María. Se compartieron avances en talleres de memoria y se reforzó el plan de medicación. La familia se mostró conforme.',
+      conformidad: 'Alta',
+    },
+    {
+      id: 'reu-p5',
       titulo: 'Reunión mensual: Carlos Sánchez',
-      fecha: new Date(YEAR, MONTH, 24, 10, 0),
+      fecha: new Date(YEAR, MONTH - 2, 17, 11, 0),
       modalidad: 'Presencial',
       lugar: 'Sala de Reuniones 1er Piso',
-      proxima: true,
+      proxima: false,
       participantes: ['Laura M.', 'Dr. García', 'Enfermería', 'Martín Sánchez (Familiar)'],
-      minuta: 'Seguimiento del ingreso de Carlos. Se evaluó adaptación, participación en actividades y estado general.',
+      minuta: 'Primer seguimiento tras el ingreso de Carlos. Se presentó el plan de atención y se definieron objetivos a corto plazo. Familia conforme.',
       conformidad: 'Alta',
     },
     {
-      id: 'reu-5',
-      titulo: 'Reunión mensual: María López',
-      fecha: new Date(YEAR, MONTH, 25, 10, 0),
-      modalidad: 'Virtual',
-      link: 'https://meet.google.com/xyz-uvw-rst',
-      proxima: true,
-      participantes: ['Laura M.', 'Dr. García', 'Sofía López (Familiar)'],
-      minuta: 'Revisión mensual de María. Se compartieron avances en talleres de memoria y se reforzó el plan de medicación. La familia se mostró conforme.',
-      conformidad: 'Alta',
-    },
-    {
-      id: 'reu-6',
+      id: 'reu-p6',
       titulo: 'Reunión mensual: Rosa Giménez',
-      fecha: new Date(YEAR, MONTH, 26, 11, 0),
+      fecha: new Date(YEAR, MONTH - 2, 19, 11, 0),
       modalidad: 'Presencial',
       lugar: 'Salón Comedor Principal',
-      proxima: true,
+      proxima: false,
       participantes: ['Dr. García', 'Lic. Fernández', 'Carlos Giménez (Familiar)'],
-      minuta: 'Encuentro mensual con la familia Giménez. Se evaluó el estado general de Rosa y se planificaron actividades para el próximo mes.',
-      conformidad: 'Alta',
+      minuta: 'Encuentro mensual con la familia Giménez. Se evaluó el estado general de Rosa, se planificaron actividades para el próximo mes. Se detectó leve deterioro en memoria a corto plazo.',
+      conformidad: 'Media',
     },
     {
-      id: 'reu-7',
+      id: 'reu-p7',
       titulo: 'Reunión mensual: Juan Pérez',
-      fecha: new Date(YEAR, MONTH, 27, 14, 0),
+      fecha: new Date(YEAR, MONTH - 3, 10, 14, 0),
       modalidad: 'Virtual',
-      link: 'https://meet.google.com/def-ghi-jkl',
-      proxima: true,
+      link: 'https://meet.google.com/vwx-yza-bcd',
+      proxima: false,
       participantes: ['Dr. García', 'Lic. Fernández', 'Ana Pérez (Familiar)'],
-      minuta: 'Evaluación trimestral de Juan. Se revisaron resultados de kinesiología y se ajustaron tiempos de actividad física.',
-      conformidad: 'Alta',
+      minuta: 'Evaluación trimestral de Juan. Se revisaron resultados de kinesiología y se ajustaron tiempos de actividad física. La familia pidió mayor comunicación sobre incidentes.',
+      conformidad: 'Media',
     },
     {
-      id: 'reu-8',
+      id: 'reu-p8',
       titulo: 'Reunión mensual: María López',
-      fecha: new Date(YEAR, MONTH, 28, 10, 0),
+      fecha: new Date(YEAR, MONTH - 3, 12, 10, 0),
       modalidad: 'Presencial',
       lugar: 'Sala de Reuniones 1er Piso',
-      proxima: true,
+      proxima: false,
       participantes: ['Laura M.', 'Dr. García', 'Sofía López (Familiar)'],
-      minuta: 'Seguimiento bimestral de María. Se revisaron resultados de estimulación cognitiva y se confirmó estabilidad del tratamiento.',
+      minuta: 'Seguimiento trimestral de María. Se evaluaron resultados de estimulación cognitiva y se confirmó estabilidad del tratamiento. Se acordó aumentar participación en talleres.',
       conformidad: 'Alta',
     },
     {
-      id: 'reu-9',
+      id: 'reu-p9',
       titulo: 'Reunión mensual: Carlos Sánchez',
-      fecha: new Date(YEAR, MONTH, 30, 11, 0),
-      modalidad: 'Presencial',
-      lugar: 'Consultorio 2',
-      proxima: true,
+      fecha: new Date(YEAR, MONTH - 3, 14, 11, 0),
+      modalidad: 'Virtual',
+      link: 'https://meet.google.com/efg-hij-klm',
+      proxima: false,
       participantes: ['Laura M.', 'Dr. García', 'Martín Sánchez (Familiar)'],
-      minuta: 'Seguimiento tras el ingreso de Carlos. Se presentó el plan de atención y se definieron objetivos a corto plazo.',
-      conformidad: 'Alta',
+      minuta: 'Revisión del estado de Carlos tras un mes de ingreso. Se evaluó adaptación, participación en actividades y estado general. Se sugirió incrementar actividades recreativas.',
+      conformidad: 'Baja',
     },
   ];
 
@@ -915,7 +993,8 @@
                   <span style="font-size:0.75rem;color:var(--text-muted);display:block">${fmtDate(r.fecha)} · ${r.modalidad} ${r.lugar ? '· ' + r.lugar : ''}</span>
                 </div>
                 <div style="display:flex;align-items:center;gap:8px">
-                  ${r.proxima ? '<span class="badge badge-danger">Próxima</span>' : `<span class="badge ${r.conformidad === 'Alta' ? 'badge-success' : 'badge-warning'}">${r.conformidad}</span>`}
+                  ${r.proxima ? '<span style="font-size:0.7rem;color:var(--info)">Pendiente</span>' : `<span style="font-size:0.7rem;color:var(--muted)">${r.conformidad}</span>`}
+                  <span class="btn btn-xs btn-outline" style="font-size:0.7rem;padding:2px 8px;cursor:pointer">Ver detalles</span>
                   <span style="font-size:0.7rem;color:var(--text-muted)">▼</span>
                 </div>
               </div>
@@ -1571,7 +1650,7 @@
   // --- Reuniones ---
   FAM_RENDERS.reuniones = function () {
     const prox = REUNIONES.find(r => r.proxima);
-    const pasadas = REUNIONES.filter(r => !r.proxima);
+    const todas = REUNIONES;
 
     let html = `
       <div class="section-title"><span class="ico">🤝</span> Reuniones y Seguimiento</div>
@@ -1603,7 +1682,7 @@
       <div class="section-block">
         <div class="section-title" style="font-size:1rem"><span class="ico">📜</span> Historial de Reuniones</div>
         <div class="card">
-          ${pasadas.length ? pasadas.map(r => `
+          ${REUNIONES.map(r => `
             <div class="minuta-item" onclick="this.classList.toggle('expanded')">
               <div class="minuta-summary">
                 <div>
@@ -1611,7 +1690,7 @@
                   <small>${fmtDate(r.fecha)} · ${r.modalidad} ${r.lugar ? '· ' + r.lugar : ''}</small>
                 </div>
                 <div>
-                  <span class="badge ${r.conformidad === 'Alta' ? 'badge-success' : 'badge-warning'}">${r.conformidad}</span>
+                  <span style="color:var(--text-muted)">${r.conformidad}</span>
                   <span style="margin-left:8px;font-size:0.8rem">▼</span>
                 </div>
               </div>
@@ -1625,7 +1704,34 @@
                 <button class="btn btn-sm btn-secondary" style="margin-top:8px">📄 Descargar minuta</button>
               </div>
             </div>
-          `).join('') : '<p style="padding:16px">No hay reuniones pasadas registradas.</p>'}
+          `).join('')}
+        </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="card" style="padding:16px">
+          <h4 style="font-size:0.9rem;margin-bottom:8px;font-family:var(--font-body)">👥 Participantes Frecuentes</h4>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            ${(() => {
+              const freq = {};
+              REUNIONES.forEach(r => r.participantes.forEach(p => { freq[p] = (freq[p] || 0) + 1; }));
+              return Object.entries(freq).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([name, count]) => `
+                <div style="display:flex;justify-content:space-between;align-items:center;font-size:0.82rem">
+                  <span style="color:var(--text-secondary)">${name}</span>
+                  <span class="badge badge-neutral">${count} reuniones</span>
+                </div>
+              `).join('');
+            })()}
+          </div>
+        </div>
+
+        <div class="card" style="padding:16px">
+          <h4 style="font-size:0.9rem;margin-bottom:8px;font-family:var(--font-body)">✅ Conformidad</h4>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="flex:1;height:8px;background:var(--bg-body);border-radius:4px;overflow:hidden">
+              <div style="height:100%;width:${(conformidadAlta / todas * 100).toFixed(0)}%;background:var(--emerald-500);border-radius:4px"></div>
+            </div>
+            <span style="font-size:0.82rem;font-weight:600;color:var(--emerald-500)">${(conformidadAlta / todas * 100).toFixed(0)}%</span>
+          </div>
+          <p style="font-size:0.75rem;color:var(--text-muted);margin-top:4px">${conformidadAlta} de ${todas} reuniones con conformidad alta</p>
         </div>
       </div>
     `;
